@@ -10,24 +10,24 @@ import time
 # init means initialize
 def init():
     gpio.setmode(gpio.BCM)
-    gpio.setup(27, gpio.OUT)
-    gpio.setup(24, gpio.OUT)
-    gpio.setup(17, gpio.OUT)
-    gpio.setup(23, gpio.OUT)
-    gpio.output(27, True)
-    gpio.output(23, True)
+    gpio.setup(13, gpio.OUT)
+    gpio.setup(18, gpio.OUT)
+    gpio.setup(11, gpio.OUT)
+    gpio.setup(16, gpio.OUT)
+    gpio.output(13, True)
+    gpio.output(16, True)
 
 
 # forward means to go forward
 def forward(tf):
-    gpio.output(17, True)
-    gpio.output(23, False)
+    gpio.output(11, True)
+    gpio.output(16, False)
     time.sleep(tf)
 
 
 def reverse(tf):
-    gpio.output(17, False)
-    gpio.output(23, True)
+    gpio.output(11, False)
+    gpio.output(16, True)
     time.sleep(tf)
 
 
