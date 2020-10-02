@@ -6,7 +6,6 @@ import time
 #17 and 27 - on motor
 # 23 and 24 - another
 
-
 # init means initialize
 def init():
     gpio.setmode(gpio.BCM)
@@ -17,17 +16,15 @@ def init():
     gpio.output(27, True)
     gpio.output(23, True)
 
-
 # forward means to go forward
 def forward(tf):
-    gpio.output(17, True)
-    gpio.output(23, False)
-    time.sleep(tf)
-
-
-def reverse(tf):
     gpio.output(17, False)
     gpio.output(23, True)
+    time.sleep(tf)
+
+def reverse(tf):
+    gpio.output(17, True)
+    gpio.output(23, False)
     time.sleep(tf)
 
 
