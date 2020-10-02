@@ -9,7 +9,7 @@ import time
 
 # init means initialize
 def init():
-    gpio.setmode(gpio.BOARD)
+    gpio.setmode(gpio.BCM)
     gpio.setup(27, gpio.OUT)
     gpio.setup(24, gpio.OUT)
     gpio.setup(17, gpio.OUT)
