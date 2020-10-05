@@ -7,34 +7,36 @@ import time
 # 23 and 24 - Right motor
 
 # init means initialize
-def init():
-    gpio.setmode(gpio.BCM)
-    gpio.setup(27, gpio.OUT)
-    gpio.setup(24, gpio.OUT)
-    gpio.setup(17, gpio.OUT)
-    gpio.setup(23, gpio.OUT)
-    gpio.output(27, True)
-    gpio.output(23, True)
+
+class robot(a,b,c,d):
+    def __init__():
+        gpio.setmode(gpio.BCM)
+        gpio.setup(a, gpio.OUT)
+        gpio.setup(b, gpio.OUT)
+        gpio.setup(c, gpio.OUT)
+        gpio.setup(d, gpio.OUT)
+        # gpio.output(b, True)
+        # gpio.output(c, True)
 
 
-def forward(tf):
-    gpio.output(17, True)
-    gpio.output(27, False)
-    gpio.output(23, False)
-    gpio.output(24, True)
-    time.sleep(tf)
+    def forward(tf):
+        gpio.output(a, True)
+        gpio.output(b, False)
+        gpio.output(c, False)
+        gpio.output(d, True)
+        time.sleep(tf)
 
-def reverse(tf):
-    gpio.output(17, False)
-    gpio.output(27, True)
-    gpio.output(23, True)
-    gpio.output(24, False)
-    time.sleep(tf)
+    def reverse(tf):
+        gpio.output(a, False)
+        gpio.output(b, True)
+        gpio.output(c, True)
+        gpio.output(d, False)
+        time.sleep(tf)
 
 
-init()
-forward(1.35)
-# reverse(0.9)
+robot1 = robot(17, 27, 23, 24)
+robot1.forward(1.35)
+# robot.reverse(0.9)
 
 gpio.cleanup()
 
