@@ -16,7 +16,7 @@ def init():
     gpio.output(27, True)
     gpio.output(23, True)
 
-# forward means to go forward
+
 def forward(tf):
     gpio.output(17, False)
     gpio.output(23, True)
@@ -30,7 +30,7 @@ def reverse(tf):
 
 init()
 forward(0.9)
-reverse(0.5)
+reverse(0.8)
 
 gpio.cleanup()
 
