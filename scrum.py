@@ -34,7 +34,7 @@ def reverse(tf):
 
 init()
 forward(0.9)
-reverse(0.9)
+# reverse(0.9)
 
 gpio.cleanup()
 
