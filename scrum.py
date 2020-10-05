@@ -18,8 +18,8 @@ def init():
 
 
 def forward(tf):
-    gpio.output(17, False)
-    gpio.output(23, True)
+    gpio.output(27, False)
+    gpio.output(24, True)
     time.sleep(tf)
 
 def reverse(tf):
