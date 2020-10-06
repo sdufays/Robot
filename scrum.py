@@ -37,11 +37,12 @@ class robot():
         gpio.output(self.d, False)
         time.sleep(tf)
 
+iinit = input("Program Initialized. Press 'Enter' to execute.")
+if iinit == "":
+    robot1 = robot(17, 27, 23, 24)
+    robot1.forward(1.35)
+    # robot.reverse(0.9)
 
-robot1 = robot(17, 27, 23, 24)
-robot1.forward(1.35)
-# robot.reverse(0.9)
+    gpio.cleanup()
 
-gpio.cleanup()
-
-# 17,27,23,24
+    # 17,27,23,24
