@@ -8,8 +8,8 @@ import time
 
 # init means initialize
 
-class robot(a,b,c,d):
-    def __init__():
+class robot():
+    def __init__(a,b,c,d):
         gpio.setmode(gpio.BCM)
         gpio.setup(a, gpio.OUT)
         gpio.setup(b, gpio.OUT)
