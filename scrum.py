@@ -24,8 +24,8 @@ class robot():
 
 
     def forward(self, tf):
-        gpio.output(self.a, True)
-        gpio.output(self.b, False)
+        gpio.output(self.a*1.2, True)
+        gpio.output(self.b*1.2, False)
         gpio.output(self.c, False)
         gpio.output(self.d, True)
         time.sleep(tf)
