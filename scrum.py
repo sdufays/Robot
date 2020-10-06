@@ -10,6 +10,10 @@ import time
 
 class robot():
     def __init__(self, a, b, c, d):
+        self.a = a
+        self.b = b
+        self.c = c
+        self.d = d
         gpio.setmode(gpio.BCM)
         gpio.setup(a, gpio.OUT)
         gpio.setup(b, gpio.OUT)
@@ -20,17 +24,17 @@ class robot():
 
 
     def forward(self, tf):
-        gpio.output(a, True)
-        gpio.output(b, False)
-        gpio.output(c, False)
-        gpio.output(d, True)
+        gpio.output(self.a, True)
+        gpio.output(self.b, False)
+        gpio.output(self.c, False)
+        gpio.output(self.d, True)
         time.sleep(tf)
 
     def reverse(self, tf):
-        gpio.output(a, False)
-        gpio.output(b, True)
-        gpio.output(c, True)
-        gpio.output(d, False)
+        gpio.output(self.a, False)
+        gpio.output(self.b, True)
+        gpio.output(self.c, True)
+        gpio.output(self.d, False)
         time.sleep(tf)
 
 
