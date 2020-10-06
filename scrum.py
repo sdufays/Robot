@@ -38,7 +38,8 @@ class robot():
         time.sleep(tf)
 
 iinit = input("Program Initialized. Press 'Enter' to execute.")
-if iinit == '':
+a = ""
+if iinit == a:
     robot1 = robot(17, 27, 23, 24)
     robot1.forward(1.35)
     # robot.reverse(0.9)
