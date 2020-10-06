@@ -19,14 +19,14 @@ class robot():
         # gpio.output(c, True)
 
 
-    def forward(tf):
+    def forward(self, tf):
         gpio.output(a, True)
         gpio.output(b, False)
         gpio.output(c, False)
         gpio.output(d, True)
         time.sleep(tf)
 
-    def reverse(tf):
+    def reverse(self, tf):
         gpio.output(a, False)
         gpio.output(b, True)
         gpio.output(c, True)
