@@ -3,8 +3,8 @@
 import RPi.GPIO as gpio
 import time
 
-#17 and 27 - left motor
-# 23 and 24 - Right motor
+#17, 27, 5 - left motor
+# 23, 24, 6 - Right motor
 
 # init means initialize
 
