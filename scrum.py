@@ -23,27 +23,27 @@ class robot():
         gpio.setup(d, gpio.OUT)
         gpio.setup(e, gpio.OUT)
         gpio.setup(f, gpio.OUT)
-        pwm_left = gpio.PWM(e, 100)
-        pwm_right = gpio.PWM(f, 100)
+        self.pwm_left = gpio.PWM(e, 100)
+        self.pwm_right = gpio.PWM(f, 100)
 
 
 
     def forward(self, time, speed):
         gpio.output(self.a, True)
         gpio.output(self.b, False)
-        pwm_left.start(speed)
+        self.pwm_left.start(speed)
         gpio.output(self.c, False)
         gpio.output(self.d, True)
-        pwm_right.start(speed)
+        self.pwm_right.start(speed)
         time.sleep(time)
 
     def reverse(self, time, speed):
         gpio.output(self.a, False)
         gpio.output(self.b, True)
-        pwm_left.start(speed)
+        self.pwm_left.start(speed)
         gpio.output(self.c, True)
         gpio.output(self.d, False)
-        pwm_right.start(speed)
+        self.pwm_right.start(speed)
         time.sleep(time)
 
 
