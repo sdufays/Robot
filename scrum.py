@@ -9,18 +9,23 @@ import time
 # init means initialize
 
 class robot():
-    def __init__(self, a, b, c, d):
+    def __init__(self, a, b, c, d, e, f):
         self.a = a
         self.b = b
         self.c = c
         self.d = d
+        self.e = e
+        self.f = f
         gpio.setmode(gpio.BCM)
         gpio.setup(a, gpio.OUT)
         gpio.setup(b, gpio.OUT)
         gpio.setup(c, gpio.OUT)
         gpio.setup(d, gpio.OUT)
-        # gpio.output(b, True)
-        # gpio.output(c, True)
+        gpio.setup(e, gpio.OUT)
+        gpio.setup(f, gpio.OUT)
+        pwm_left = gpio.PWM(e, 100)
+        pwm_right = gpio.PWM(f, 100)
+
 
 
     def forward(self, tf):
@@ -38,7 +43,7 @@ class robot():
         time.sleep(tf)
 
 
-robot1 = robot(17, 27, 23, 24)
+robot1 = robot(17, 27, 23, 24, 5, 6)
 robot1.forward(1.35)
 # robot.reverse(0.9)
 
