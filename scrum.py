@@ -16,6 +16,7 @@ class robot():
         self.d = d
         self.e = e
         self.f = f
+        gpio.setwarnings(False)
         gpio.setmode(gpio.BCM)
         gpio.setup(a, gpio.OUT)
         gpio.setup(b, gpio.OUT)
@@ -28,23 +29,23 @@ class robot():
 
 
 
-    def forward(self, time, speed):
+    def forward(self, tf, speed):
         gpio.output(self.a, True)
         gpio.output(self.b, False)
         self.pwm_left.start(speed)
         gpio.output(self.c, False)
         gpio.output(self.d, True)
         self.pwm_right.start(speed)
-        time.sleep(time)
+        time.sleep(tf)
 
-    def reverse(self, time, speed):
+    def reverse(self, tf, speed):
         gpio.output(self.a, False)
         gpio.output(self.b, True)
         self.pwm_left.start(speed)
         gpio.output(self.c, True)
         gpio.output(self.d, False)
         self.pwm_right.start(speed)
-        time.sleep(time)
+        time.sleep(tf)
 
 
 robot1 = robot(17, 27, 23, 24, 5, 6)
