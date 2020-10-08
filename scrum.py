@@ -51,7 +51,7 @@ class robot():
 
 
 robot1 = robot(17, 27, 23, 24, 5, 6)
-robot1.forward(3, 25)
+robot1.forward(3, 50)
 
 gpio.cleanup()
 
