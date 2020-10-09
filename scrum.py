@@ -1,4 +1,7 @@
 
+import RPI.gpio as gpio
+import time
+
 #17, 27, 5 - left motor
 # 23, 24, 6 - Right motor
 
