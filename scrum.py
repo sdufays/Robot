@@ -1,11 +1,3 @@
-# change the pins to the correct ones
-
-import RPi.GPIO as gpio
-import time
-
-#17, 27, 5 - left motor
-# 23, 24, 6 - Right motor
-
 # init means initialize
 
 class robot():
@@ -29,21 +21,19 @@ class robot():
 
 
 
-    def forward(self, feet, speed):
-        tf = 36*feet/speed
+    def forward(self, tf, speed):
         gpio.output(self.a, True)
         gpio.output(self.b, False)
-        self.pwm_left.start(speed*1.6)
+        self.pwm_left.start(speed*1.3)
         gpio.output(self.c, False)
         gpio.output(self.d, True)
         self.pwm_right.start(speed)
         time.sleep(tf)
 
-    def reverse(self, feet, speed):
-        tf = 36*feet/speed
+    def reverse(self, tf, speed):
         gpio.output(self.a, False)
         gpio.output(self.b, True)
-        self.pwm_left.start(speed*1.6)
+        self.pwm_left.start(speed*1.3)
         gpio.output(self.c, True)
         gpio.output(self.d, False)
         self.pwm_right.start(speed)
@@ -51,7 +41,7 @@ class robot():
 
 
 robot1 = robot(17, 27, 23, 24, 5, 6)
-robot1.forward(3, 50)
+robot1.forward(1.2, 25)
 
 gpio.cleanup()
 
