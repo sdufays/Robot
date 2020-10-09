@@ -1,4 +1,4 @@
-import RPi.gpio as gpio
+import RPi.GPIO as gpio
 import time
 
 #17, 27, 5 - left motor
