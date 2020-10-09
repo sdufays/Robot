@@ -1,4 +1,6 @@
-# init means initialize
+
+#17, 27, 5 - left motor
+# 23, 24, 6 - Right motor
 
 class robot():
     def __init__(self, a, b, c, d, e, f):
@@ -18,8 +20,6 @@ class robot():
         gpio.setup(f, gpio.OUT)
         self.pwm_left = gpio.PWM(e, 100)
         self.pwm_right = gpio.PWM(f, 100)
-
-
 
     def forward(self, tf, speed):
         gpio.output(self.a, True)
@@ -44,5 +44,3 @@ robot1 = robot(17, 27, 23, 24, 5, 6)
 robot1.forward(1.2, 25)
 
 gpio.cleanup()
-
-# 17,27,23,24
