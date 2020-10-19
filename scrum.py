@@ -26,20 +26,25 @@ class robot():
     def forward(self, tf, speed):
         gpio.output(self.a, True)
         gpio.output(self.b, False)
-        self.pwm_left.start(speed*1.38)
         gpio.output(self.c, False)
         gpio.output(self.d, True)
+        self.pwm_left.start(speed*1.38)
         self.pwm_right.start(speed)
         time.sleep(tf)
+        self.pwm_left.stop
+        self.pwm_right.stop
+
 
     def reverse(self, tf, speed):
         gpio.output(self.a, False)
         gpio.output(self.b, True)
-        self.pwm_left.start(speed*1.38)
         gpio.output(self.c, True)
         gpio.output(self.d, False)
+        self.pwm_left.start(speed*1.38)
         self.pwm_right.start(speed)
         time.sleep(tf)
+        self.pwm_left.stop
+        self.pwm_right.stop
 
 
 robot1 = robot(17, 27, 23, 24, 5, 6)
