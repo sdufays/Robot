@@ -24,10 +24,10 @@ class robot():
         gpio.cleanup()
 
     def forward(self, runtime, speed):
-        gpio.output(R1, True)
-        gpio.output(R2, False)
         gpio.output(L1, False)
         gpio.output(L2, True)
+        gpio.output(R1, True)
+        gpio.output(R2, False)
         self.LPWM.start(speed*L_MULT)
         self.RPWM.start(speed)
         time.sleep(runtime)
@@ -35,13 +35,35 @@ class robot():
         self.RPWM.stop
 
     def reverse(self, runtime, speed):
-        gpio.output(R1, False)
-        gpio.output(R2, True)
         gpio.output(L1, True)
         gpio.output(L2, False)
+        gpio.output(R1, False)
+        gpio.output(R2, True)
         self.LPWM.start(speed*L_MULT)
         self.RPWM.start(speed)
         time.sleep(runtime)
+        self.LPWM.stop
+        self.RPWM.stop
+    
+    def left(self):
+        gpio.output(L1, True)
+        gpio.output(L2, False)
+        gpio.output(R1, True)
+        gpio.output(R2, False)
+        self.LPWM.start(15*L_MULT)
+        self.RPWM.start(15)
+        time.sleep(0.5)
+        self.LPWM.stop
+        self.RPWM.stop
+    
+    def right(self):
+        gpio.output(L1, False)
+        gpio.output(L2, True)
+        gpio.output(R1, False)
+        gpio.output(R2, True)
+        self.LPWM.start(15*L_MULT)
+        self.RPWM.start(15)
+        time.sleep(0.5)
         self.LPWM.stop
         self.RPWM.stop
 
