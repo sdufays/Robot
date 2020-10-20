@@ -31,8 +31,8 @@ class robot():
         self.LPWM.start(speed*L_MULT)
         self.RPWM.start(speed)
         time.sleep(runtime)
-        self.RPWM.stop()
-        self.LPWM.stop()
+        self.RPWM.ChangeDutyCycle(0)
+        self.LPWM.ChangeDutyCycle(0)
 
     def reverse(self, runtime, speed):
         gpio.output(L1, True)
