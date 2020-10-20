@@ -7,7 +7,7 @@ R3 = 5 #enable
 L1 = 23
 L2 = 24
 L3 = 6
-L_MULT = 1.38
+L_MULT = 1.5
 pins = [R1, R2, R3, L1, L2, L3]
 
 class robot():
