@@ -31,6 +31,8 @@ class robot():
         self.LPWM.start(speed*L_MULT)
         self.RPWM.start(speed)
         time.sleep(runtime)
+        self.RPWM.stop()
+        self.LPWM.stop()
 
     def reverse(self, runtime, speed):
         gpio.output(L1, True)
@@ -40,6 +42,8 @@ class robot():
         self.LPWM.start(speed*L_MULT)
         self.RPWM.start(speed)
         time.sleep(runtime)
+        self.RPWM.stop()
+        self.LPWM.stop()
     
     def left(self):
         gpio.output(L1, True)
@@ -49,6 +53,8 @@ class robot():
         self.LPWM.start(15*L_MULT)
         self.RPWM.start(15)
         time.sleep(0.5)
+        self.RPWM.stop()
+        self.LPWM.stop()
     
     def right(self):
         gpio.output(L1, False)
@@ -58,6 +64,8 @@ class robot():
         self.LPWM.start(15*L_MULT)
         self.RPWM.start(15)
         time.sleep(0.5)
+        self.RPWM.stop()
+        self.LPWM.stop()
 
 
 if __name__ == "__main__":
