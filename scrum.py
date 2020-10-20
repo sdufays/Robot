@@ -69,6 +69,6 @@ class robot():
 
 
 if __name__ == "__main__":
-    robot1 = robot(17, 27, 23, 24, 5, 6)
+    robot1 = robot()
     robot1.forward(3.2, 15)
     del robot1
