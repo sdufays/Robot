@@ -7,7 +7,7 @@ R3 = 5 #enable
 L1 = 23
 L2 = 24
 L3 = 6
-L_MULT = 1.38
+L_MULT = 1.5
 pins = [R1, R2, R3, L1, L2, L3]
 
 class robot():
@@ -31,8 +31,8 @@ class robot():
         self.LPWM.start(speed*L_MULT)
         self.RPWM.start(speed)
         time.sleep(runtime)
-        self.RPWM.ChangeDutyCycle(0)
-        self.LPWM.ChangeDutyCycle(0)
+        self.RPWM.stop()
+        self.LPWM.stop()
 
     def reverse(self, runtime, speed):
         gpio.output(L1, True)
