@@ -61,7 +61,7 @@ class robot():
         gpio.output(L2, False)
         gpio.output(R1, True)
         gpio.output(R2, False)
-        self.LPWM.start(32*L_MULT)
+        self.LPWM.start(33*L_MULT)
         self.RPWM.start(30)
         time.sleep(0.57)
         self.LPWM.stop()
@@ -70,5 +70,6 @@ class robot():
 
 if __name__ == "__main__":
     robot1 = robot()
+    robot1.left()
     robot1.right()
     del robot1
