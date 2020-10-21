@@ -37,6 +37,7 @@ class robot():
         gpio.output(L2, False)
         gpio.output(R1, False)
         gpio.output(R2, False)
+        time.sleep(1)
 
 
     def reverse(self, runtime, speed):
