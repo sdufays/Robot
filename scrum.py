@@ -1,13 +1,13 @@
 import RPi.GPIO as gpio
 import time
 
-R1 = 17 #forward
-R2 = 27 #reverse
-R3 = 5 #enable
-L1 = 23
-L2 = 24
-L3 = 6
-L_MULT = 1.5
+R1 = 23 #forward
+R2 = 24 #reverse
+R3 = 6 #enable
+L1 = 17
+L2 = 27
+L3 = 5
+L_MULT = 1.38
 pins = [R1, R2, R3, L1, L2, L3]
 
 class robot():
