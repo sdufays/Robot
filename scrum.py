@@ -33,8 +33,6 @@ class robot():
         time.sleep(runtime)
         self.LPWM.stop()
         self.RPWM.stop()
-        gpio.cleanup()
-
 
     def reverse(self, runtime, speed):
         gpio.output(L1, False)
@@ -59,13 +57,6 @@ class robot():
         self.RPWM.stop()
     
     def right(self):
-        gpio.setwarnings(False)
-        gpio.setmode(gpio.BCM)
-        for i in pins:
-            gpio.setup(i, gpio.OUT)
-            gpio.output(i, gpio.LOW)
-        self.LPWM = gpio.PWM(L3, 100)
-        self.RPWM = gpio.PWM(R3, 100)
         gpio.output(L1, True)
         gpio.output(L2, False)
         gpio.output(R1, True)
