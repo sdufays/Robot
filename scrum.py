@@ -46,6 +46,11 @@ class robot():
         time.sleep(runtime)
         self.LPWM.stop()
         self.RPWM.stop()
+        for i in pins:
+            gpio.setup(i, gpio.OUT)
+            gpio.output(i, gpio.LOW)
+        self.LPWM = gpio.PWM(L3, 100)
+        self.RPWM = gpio.PWM(R3, 100)
     
     def left(self):
         gpio.output(L1, False)
