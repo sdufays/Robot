@@ -1,74 +1,48 @@
 import RPi.GPIO as gpio
 import time
 
-R1 = 17 #forward
-R2 = 27 #reverse
-R3 = 5 #enable
-L1 = 23
-L2 = 24
-L3 = 6
-L_MULT = 1.38
-pins = [R1, R2, R3, L1, L2, L3]
+#17, 27, 5 - left motor
+# 23, 24, 6 - Right motor
 
 class robot():
-    def __init__(self):
+    def __init__(self, a, b, c, d, e, f):
+        self.a = a
+        self.b = b
+        self.c = c
+        self.d = d
+        self.e = e
+        self.f = f
         gpio.setwarnings(False)
         gpio.setmode(gpio.BCM)
-        for i in pins:
-            gpio.setup(i, gpio.OUT)
-            gpio.output(i, gpio.LOW)
-        self.LPWM = gpio.PWM(L3, 100)
-        self.RPWM = gpio.PWM(R3, 100)
+        gpio.setup(a, gpio.OUT)
+        gpio.setup(b, gpio.OUT)
+        gpio.setup(c, gpio.OUT)
+        gpio.setup(d, gpio.OUT)
+        gpio.setup(e, gpio.OUT)
+        gpio.setup(f, gpio.OUT)
+        self.pwm_left = gpio.PWM(e, 100)
+        self.pwm_right = gpio.PWM(f, 100)
 
-    def __del__(self):
-        gpio.cleanup()
+    def forward(self, tf, speed):
+        gpio.output(self.a, True)
+        gpio.output(self.b, False)
+        self.pwm_left.start(speed*1.38)
+        gpio.output(self.c, False)
+        gpio.output(self.d, True)
+        self.pwm_right.start(speed)
+        time.sleep(tf)
 
-    def forward(self, runtime, speed):
-        gpio.output(L1, False)
-        gpio.output(L2, True)
-        gpio.output(R1, True)
-        gpio.output(R2, False)
-        self.LPWM.start(speed*L_MULT)
-        self.RPWM.start(speed)
-        time.sleep(runtime)
-        self.RPWM.ChangeDutyCycle(0)
-        self.LPWM.ChangeDutyCycle(0)
-
-    def reverse(self, runtime, speed):
-        gpio.output(L1, True)
-        gpio.output(L2, False)
-        gpio.output(R1, False)
-        gpio.output(R2, True)
-        self.LPWM.start(speed*L_MULT)
-        self.RPWM.start(speed)
-        time.sleep(runtime)
-        self.RPWM.stop()
-        self.LPWM.stop()
-    
-    def left(self):
-        gpio.output(L1, True)
-        gpio.output(L2, False)
-        gpio.output(R1, True)
-        gpio.output(R2, False)
-        self.LPWM.start(15*L_MULT)
-        self.RPWM.start(15)
-        time.sleep(0.5)
-        self.RPWM.stop()
-        self.LPWM.stop()
-    
-    def right(self):
-        gpio.output(L1, False)
-        gpio.output(L2, True)
-        gpio.output(R1, False)
-        gpio.output(R2, True)
-        self.LPWM.start(15*L_MULT)
-        self.RPWM.start(15)
-        time.sleep(0.5)
-        self.RPWM.stop()
-        self.LPWM.stop()
+    def reverse(self, tf, speed):
+        gpio.output(self.a, False)
+        gpio.output(self.b, True)
+        self.pwm_left.start(speed*1.38)
+        gpio.output(self.c, True)
+        gpio.output(self.d, False)
+        self.pwm_right.start(speed)
+        time.sleep(tf)
 
 
-if __name__ == "__main__":
-    robot1 = robot()
-    robot1.forward(3.2, 15)
-    del robot1
+robot1 = robot(17, 27, 23, 24, 5, 6)
+robot1.forward(3.2, 15)
+
+gpio.cleanup()
