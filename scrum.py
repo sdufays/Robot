@@ -33,11 +33,7 @@ class robot():
         time.sleep(runtime)
         self.LPWM.stop()
         self.RPWM.stop()
-        gpio.output(L1, False)
-        gpio.output(L2, False)
-        gpio.output(R1, False)
-        gpio.output(R2, False)
-        time.sleep(1)
+        gpio.cleanup()
 
 
     def reverse(self, runtime, speed):
