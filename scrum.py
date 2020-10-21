@@ -70,8 +70,12 @@ class robot():
 
 if __name__ == "__main__":
     robot1 = robot()
-    robot1.forward(2, 15)
+    robot1.forward(1, 15)
     robot1.left()
-    robot1.reverse(2, 15)
+    robot1.forward(1, 15)
+    robot1.right()
+    robot1.forward(1, 15)
+    robot1.left()
+    robot1.forward(1, 15)
     robot1.right()
     del robot1
