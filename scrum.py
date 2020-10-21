@@ -46,6 +46,8 @@ class robot():
         time.sleep(runtime)
         self.LPWM.stop()
         self.RPWM.stop()
+        gpio.setwarnings(False)
+        gpio.setmode(gpio.BCM)
         for i in pins:
             gpio.setup(i, gpio.OUT)
             gpio.output(i, gpio.LOW)
