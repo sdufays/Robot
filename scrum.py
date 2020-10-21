@@ -72,5 +72,5 @@ if __name__ == "__main__":
     robot1 = robot()
     robot1.left()
     time.sleep(2)
-    robot.right()
+    robot1.right()
     del robot1
