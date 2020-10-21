@@ -70,7 +70,5 @@ class robot():
 
 if __name__ == "__main__":
     robot1 = robot()
-    robot1.left()
-    time.sleep(2)
     robot1.right()
     del robot1
