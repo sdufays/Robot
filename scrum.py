@@ -7,7 +7,7 @@ R3 = 6 #enable
 L1 = 17
 L2 = 27
 L3 = 5
-L_MULT = 1.38
+L_MULT = 1.36
 pins = [R1, R2, R3, L1, L2, L3]
 
 class robot():
@@ -46,18 +46,18 @@ class robot():
         gpio.output(L2, True)
         gpio.output(R1, False)
         gpio.output(R2, True)
-        self.LPWM.start(20*L_MULT)
-        self.RPWM.start(20)
-        time.sleep(1)
+        self.LPWM.start(25*L_MULT)
+        self.RPWM.start(25)
+        time.sleep(0.9)
     
     def right(self):
         gpio.output(L1, True)
         gpio.output(L2, False)
         gpio.output(R1, True)
         gpio.output(R2, False)
-        self.LPWM.start(20*L_MULT)
-        self.RPWM.start(20)
-        time.sleep(1)
+        self.LPWM.start(25*L_MULT)
+        self.RPWM.start(25)
+        time.sleep(0.9)
     
     def stop(self):
         gpio.output(L1, False)
