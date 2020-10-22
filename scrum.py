@@ -75,7 +75,7 @@ if __name__ == "__main__":
     robot1.forward(1,15)
     robot1.left()
     robot1.forward(1,15)
-    robot1.left()
+    robot1.right()
     robot1.reverse(1,15)
     robot1.right()
     robot1.forward(1,15)
