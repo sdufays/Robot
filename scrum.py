@@ -57,6 +57,7 @@ class robot():
         self.RPWM.stop()
     
     def right(self):
+        time.sleep(1)
         gpio.output(L1, True)
         gpio.output(L2, False)
         gpio.output(R1, True)
