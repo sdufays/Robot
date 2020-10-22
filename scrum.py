@@ -48,7 +48,7 @@ class robot():
         gpio.output(R2, True)
         self.LPWM.start(25*L_MULT)
         self.RPWM.start(25)
-        time.sleep(0.75)
+        time.sleep(0.74)
     
     def right(self):
         gpio.output(L1, True)
@@ -70,16 +70,15 @@ class robot():
 
 if __name__ == "__main__":
     robot1 = robot()
+    robot1.forward(1,15)
+    robot1.right()
+    robot1.forward(1,15)
     robot1.left()
-    # robot1.forward(1,15)
-    # robot1.right()
-    # robot1.forward(1,15)
-    # robot1.left()
-    # robot1.forward(1,15)
-    # robot1.right()
-    # robot1.reverse(1,15)
-    # robot1.right()
-    # robot1.forward(1,15)
-    # robot1.forward(1,15)
+    robot1.forward(1,15)
+    robot1.right()
+    robot1.reverse(1,15)
+    robot1.right()
+    robot1.forward(1,15)
+    robot1.forward(1,15)
     robot1.stop
     del robot1
