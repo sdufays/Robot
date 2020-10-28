@@ -1,5 +1,5 @@
 import flask
-from scrum.py import robot
+from robotClass import robot
 
 
 app = Flask(__name__)
