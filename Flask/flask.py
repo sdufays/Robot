@@ -1,4 +1,4 @@
-from flask import Flask, escape, request
+from flask import flask, escape, request
 from robotClass import robot
 
 
