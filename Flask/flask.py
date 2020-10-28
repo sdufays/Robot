@@ -1,8 +1,8 @@
-import flask
+from flask import Flask
 from robotClass import robot
 
 
-app = flask(__name__)
+app = Flask(__name__)
 
 rc = robot()
 
