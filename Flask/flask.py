@@ -16,25 +16,25 @@ def hello():
 @app.route('/fwd')
 def fwd():
     # rc.fwd(10)
-    return f'moved fwd !'
+    return 'moved fwd!'
 
 # move the robot rev
 @app.route('/rev')
 def rev():
     # rc.rev(10)
-    return f'moved rev !'
+    return 'moved rev!'
 
 # move the robot left
 @app.route('/left')
 def left():
     # rc.left(10)
-    return f'moved left !'
+    return 'moved left!'
 
 # move the robot right
 @app.route('/right')
 def right():
     # rc.right(10)
-    return f'moved right !'
+    return 'moved right!'
 
 
 
