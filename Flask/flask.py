@@ -2,7 +2,7 @@ import flask
 from robotClass import robot
 
 
-app = Flask(__name__)
+app = flask(__name__)
 
 rc = robot()
 
