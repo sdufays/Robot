@@ -35,6 +35,16 @@ def right():
     rc.right()
     return 'moved right!'
 
+# run the predetermined course
+@app.route('/run')
+def run():
+    rc.forward(5, 15)
+    rc.right()
+    rc.forward(3, 15)
+    rc.reverse(1, 15)
+    rc.right()
+    rc.forward(5, 15)
+
 
 
 app.run(host= '0.0.0.0', port=8080)
