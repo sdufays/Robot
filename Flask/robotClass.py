@@ -50,7 +50,7 @@ class robot():
         gpio.output(R2, True)
         self.LPWM.start(25*L_MULT)
         self.RPWM.start(25)
-        time.sleep(0.74)
+        time.sleep(0.5)
         self.stop()
     
     def right(self):
@@ -60,7 +60,7 @@ class robot():
         gpio.output(R2, False)
         self.LPWM.start(25*L_MULT)
         self.RPWM.start(25)
-        time.sleep(0.78)
+        time.sleep(0.5)
         self.stop()
     
     def stop(self):
