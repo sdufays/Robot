@@ -7,9 +7,11 @@ app = Flask(__name__)
 rc = robot()
 
 @app.route('/')
-def hello():
-    name = request.args.get("name", "World")
-    return escape(name)
+def menu():
+    print("192.168.1.116:8080/fwd")
+    print("192.168.1.116:8080/rev")
+    print("192.168.1.116:8080/left")
+    print("192.168.1.116:8080/right")
 
 
 # move the robot fwd
