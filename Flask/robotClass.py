@@ -68,5 +68,3 @@ class robot():
         gpio.output(L2, False)
         gpio.output(R1, False)
         gpio.output(R2, False)
-        self.LPWM.stop()
-        self.RPWM.stop()
