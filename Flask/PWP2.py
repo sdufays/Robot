@@ -8,10 +8,7 @@ rc = robot()
 
 @app.route('/')
 def menu():
-    print("192.168.1.116:8080/fwd")
-    print("192.168.1.116:8080/rev")
-    print("192.168.1.116:8080/left")
-    print("192.168.1.116:8080/right")
+    return "192.168.1.116:8080/fwd 192.168.1.116:8080/rev 192.168.1.116:8080/left 192.168.1.116:8080/right"
 
 
 # move the robot fwd
