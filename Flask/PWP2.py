@@ -8,31 +8,31 @@ rc = robot()
 
 @app.route('/')
 def menu():
-    return "192.168.1.116:8080/fwd 192.168.1.116:8080/rev 192.168.1.116:8080/left 192.168.1.116:8080/right"
+    return "we are not smart enough to have links here"
 
 
 # move the robot fwd
 @app.route('/fwd')
 def fwd():
-    # rc.fwd(10)
+    rc.forward(10)
     return 'moved fwd!'
 
 # move the robot rev
 @app.route('/rev')
 def rev():
-    # rc.rev(10)
+    rc.reverse(10)
     return 'moved rev!'
 
 # move the robot left
 @app.route('/left')
 def left():
-    # rc.left(10)
+    rc.left()
     return 'moved left!'
 
 # move the robot right
 @app.route('/right')
 def right():
-    # rc.right(10)
+    rc.right()
     return 'moved right!'
 
 
