@@ -1,6 +1,6 @@
 from flask import Flask, escape, request
 from robotClass import robot
-
+import time
 
 app = Flask(__name__)
 
@@ -38,12 +38,17 @@ def right():
 # run the predetermined course
 @app.route('/run')
 def run():
-    rc.forward(4, 15)
+    rc.forward(3.5, 15)
+    time.sleep(0.5)
     rc.right()
-    rc.forward(3, 15)
+    time.sleep(0.5)
+    rc.forward(2.5, 15)
+    time.sleep(0.5)
     rc.reverse(1, 15)
+    time.sleep(0.5)
     rc.right()
-    rc.forward(4, 15)
+    time.sleep(0.5)
+    rc.forward(3.5, 15)
 
 
 
