@@ -38,7 +38,7 @@ def right():
 # run the predetermined course
 @app.route('/run')
 def run():
-    rc.forward(3.5, 15)
+    rc.forward(3.2, 15)
     time.sleep(0.5)
     rc.right()
     time.sleep(0.5)
@@ -48,7 +48,7 @@ def run():
     time.sleep(0.5)
     rc.right()
     time.sleep(0.5)
-    rc.forward(3.5, 15)
+    rc.forward(3.2, 15)
 
 
 
