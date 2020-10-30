@@ -44,7 +44,7 @@ def run():
     time.sleep(0.5)
     rc.forward(2.3, 15)
     time.sleep(0.5)
-    rc.reverse(0.7, 15)
+    rc.reverse(1, 15)
     time.sleep(0.5)
     rc.right()
     time.sleep(0.5)
