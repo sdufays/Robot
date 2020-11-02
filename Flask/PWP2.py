@@ -38,13 +38,13 @@ def right():
 # run the predetermined course
 @app.route('/run')
 def run():
-    rc.forward(3.1, 15)
+    rc.forward(3.15, 15)
     time.sleep(0.5)
     rc.right()
     time.sleep(0.5)
-    rc.forward(2.3, 15)
+    rc.forward(2.25, 15)
     time.sleep(0.5)
-    rc.reverse(1, 15)
+    rc.reverse(0.95, 15)
     time.sleep(0.5)
     rc.right()
     time.sleep(0.5)
