@@ -17,8 +17,8 @@ class robot():
         for i in pins:
             gpio.setup(i, gpio.OUT)
             gpio.output(i, gpio.LOW)
-        self.LPWM = gpio.PWM(L3, 100)
-        self.RPWM = gpio.PWM(R3, 100)
+        self.LPWM = gpio.PWM(L3, 1000)
+        self.RPWM = gpio.PWM(R3, 1000)
 
     def __del__(self):
         gpio.cleanup()
