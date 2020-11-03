@@ -58,8 +58,8 @@ class robot():
         gpio.output(L2, False)
         gpio.output(R1, True)
         gpio.output(R2, False)
-        self.LPWM.start(30*L_MULT)
-        self.RPWM.start(30)
+        self.LPWM.start(25*L_MULT)
+        self.RPWM.start(25)
         time.sleep(0.73)
         self.stop()
     
