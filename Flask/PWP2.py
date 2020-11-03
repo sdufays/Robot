@@ -48,7 +48,7 @@ def run():
     time.sleep(0.5)
     rc.right()
     time.sleep(0.5)
-    rc.forward(3.2, 15)
+    rc.forward(3, 15)
     return "say something here so Alizain doesnt get mad mad"
 
 
