@@ -42,12 +42,12 @@ def run():
     time.sleep(0.5)
     rc.right()
     time.sleep(0.5)
-    # rc.forward(1.85, 15)
-    # time.sleep(0.5)
-    # rc.reverse(0.8, 15)
-    # time.sleep(0.5)
-    # rc.right()
-    # time.sleep(0.5)
+    rc.forward(1.85, 15)
+    time.sleep(0.5)
+    rc.reverse(0.8, 15)
+    time.sleep(0.5)
+    rc.right()
+    time.sleep(0.5)
     # rc.forward(3.1, 15)
     return "say something here so Alizain doesnt get mad mad"
 
