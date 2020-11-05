@@ -57,7 +57,7 @@ def run():
     rc.right(float(e))
     time.sleep(0.5)
     rc.forward(float(f), 15)
-    return "pls work code gods"
+    return "http://192.168.1.116:8080/run?a=3&b=0.77&c=1.75&d=0.8&e=0.74&f=3.05"
 
 
 
