@@ -50,6 +50,12 @@ def right_adj():
 # run the predetermined course
 @app.route('/run')
 def run():
+    a = request.args.get('a')
+    b = request.args.get('b')
+    c = request.args.get('c')
+    d = request.args.get('d')
+    e = request.args.get('e')
+    f = request.args.get('f')
     rc.forward(3, 15)
     time.sleep(0.5)
     rc.right()
