@@ -14,25 +14,27 @@ def menu():
 # move the robot fwd
 @app.route('/fwd')
 def fwd():
-    rc.forward(0.5, 15)
+    rc.forward(1, 15)
     return 'moved fwd!'
 
 # move the robot rev
 @app.route('/rev')
 def rev():
-    rc.reverse(0.5, 15)
+    rc.reverse(1, 15)
     return 'moved rev!'
 
 # move the robot left
 @app.route('/left')
 def left():
-    rc.left()
+    a = request.args.get('a')
+    rc.left(a)
     return 'moved left!'
 
 # move the robot right
 @app.route('/right')
 def right():
-    rc.right()
+    a = request.args.get('a')
+    rc.right(a)
     return 'moved right!'
 
 # run the predetermined course
