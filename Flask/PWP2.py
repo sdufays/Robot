@@ -42,7 +42,7 @@ def run():
     time.sleep(0.5)
     rc.right()
     time.sleep(0.5)
-    rc.forward(1.85, 15)
+    rc.forward(1.75, 15)
     time.sleep(0.5)
     rc.reverse(0.8, 15)
     time.sleep(0.5)
