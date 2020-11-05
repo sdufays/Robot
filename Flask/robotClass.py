@@ -63,6 +63,26 @@ class robot():
         time.sleep(0.77)
         self.stop()
     
+    def left_adj(self):
+        gpio.output(L1, False)
+        gpio.output(L2, True)
+        gpio.output(R1, False)
+        gpio.output(R2, True)
+        self.LPWM.start(20*L_MULT)
+        self.RPWM.start(20)
+        time.sleep(0.05)
+        self.stop()
+    
+    def right_adj(self):
+        gpio.output(L1, True)
+        gpio.output(L2, False)
+        gpio.output(R1, True)
+        gpio.output(R2, False)
+        self.LPWM.start(20*L_MULT)
+        self.RPWM.start(20)
+        time.sleep(0.05)
+        self.stop()
+    
     def stop(self):
         gpio.output(L1, False)
         gpio.output(L2, False)
