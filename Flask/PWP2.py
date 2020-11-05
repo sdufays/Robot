@@ -3,13 +3,13 @@ from robotClass import robot
 import time
 
 app = Flask(__name__)
-
 rc = robot()
+
+#fwd 3, right 0.75, fwd 1.75, rev 0.8, right 0.75, fwd 3.05
 
 @app.route('/')
 def menu():
     return "we are not smart enough to have links here"
-
 
 # move the robot fwd
 @app.route('/fwd')
@@ -56,18 +56,18 @@ def run():
     d = request.args.get('d')
     e = request.args.get('e')
     f = request.args.get('f')
-    rc.forward(3, 15)
+    rc.forward(a, 15)
     time.sleep(0.5)
-    rc.right()
+    rc.right(b)
     time.sleep(0.5)
-    rc.forward(1.75, 15)
+    rc.forward(c, 15)
     time.sleep(0.5)
-    rc.reverse(0.8, 15)
+    rc.reverse(d, 15)
     time.sleep(0.5)
-    rc.right()
+    rc.right(e)
     time.sleep(0.5)
-    rc.forward(3.05, 15)
-    return "say something here so Alizain doesnt get mad mad"
+    rc.forward(f, 15)
+    return "pls work code gods"
 
 
 
