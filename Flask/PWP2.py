@@ -27,14 +27,14 @@ def rev():
 @app.route('/left')
 def left():
     a = request.args.get('a')
-    rc.left(a)
+    rc.left(float(a))
     return 'moved left!'
 
 # move the robot right
 @app.route('/right')
 def right():
     a = request.args.get('a')
-    rc.right(a)
+    rc.right(float(a))
     return 'moved right!'
 
 # run the predetermined course
@@ -46,17 +46,17 @@ def run():
     d = request.args.get('d')
     e = request.args.get('e')
     f = request.args.get('f')
-    rc.forward(a, 15)
+    rc.forward(float(a), 15)
     time.sleep(0.5)
-    rc.right(b)
+    rc.right(float(b))
     time.sleep(0.5)
-    rc.forward(c, 15)
+    rc.forward(float(c), 15)
     time.sleep(0.5)
-    rc.reverse(d, 15)
+    rc.reverse(float(d), 15)
     time.sleep(0.5)
-    rc.right(e)
+    rc.right(float(e))
     time.sleep(0.5)
-    rc.forward(f, 15)
+    rc.forward(float(f), 15)
     return "pls work code gods"
 
 
