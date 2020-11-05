@@ -9,7 +9,7 @@ rc = robot()
 
 @app.route('/')
 def menu():
-    return "we are not smart enough to have links here"
+    return "http://192.168.1.116:8080/run?a=3&b=0.77&c=1.75&d=0.8&e=0.74&f=3.05"
 
 # move the robot fwd
 @app.route('/fwd')
@@ -57,7 +57,7 @@ def run():
     rc.right(float(e))
     time.sleep(0.5)
     rc.forward(float(f), 15)
-    return "http://192.168.1.116:8080/run?a=3&b=0.77&c=1.75&d=0.8&e=0.74&f=3.05"
+    return "robot work yes"
 
 
 
