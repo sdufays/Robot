@@ -35,18 +35,6 @@ def right():
     rc.right()
     return 'moved right!'
 
-# adjust left
-@app.route('/leftadj')
-def left_adj():
-    rc.left_adj()
-    return 'adjusted left!'
-
-# adjust right
-@app.route('/rightadj')
-def right_adj():
-    rc.right_adj()
-    return 'adjusted right!'
-
 # run the predetermined course
 @app.route('/run')
 def run():
