@@ -9,7 +9,7 @@ rc = robot()
 
 @app.route('/')
 def menu():
-    return "http://192.168.1.116:8080/run?a=3&b=0.75&c=1.9&d=0.8&e=0.77&f=3.15"
+    return "http://192.168.1.116:8080/run?a=3&b=0.7&c=1.9&d=0.8&e=0.7&f=3.15"
 
 # move the robot fwd
 @app.route('/fwd')
