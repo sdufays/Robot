@@ -1,9 +1,14 @@
 
 import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpRequest;
+import java.net.URI;
+import java.net.http.HttpResponse.BodyHandlers;
 import java.lang.Object;
 
-class client extends Object {
+class Main extends Object {
   public static void main(String[] args) {
+    forward();
   }
   public static void forward(){
     HttpClient client = HttpClient.newHttpClient();
