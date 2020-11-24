@@ -1,5 +1,4 @@
 package layout;
-
 /*
  * BorderLayoutDemo.java
  *
@@ -8,8 +7,11 @@ import javax.swing.*;
 import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Dimension;
+import java.awt.*;
+import java.awt.event.*;
 
-public class BorderLayoutDemo {
+
+public abstract class BorderLayoutDemo implements ActionListener {
     public static boolean RIGHT_TO_LEFT = false;
 
     public static void addComponentsToPane(Container pane) {
@@ -24,23 +26,35 @@ public class BorderLayoutDemo {
                     java.awt.ComponentOrientation.RIGHT_TO_LEFT);
         }
 
-        JButton button = new JButton("Button 1 (PAGE_START)");
+        JButton button = new JButton("Stop");
         pane.add(button, BorderLayout.PAGE_START);
+        // JButton button = new Jbutton("Forward");
+        // pane.add(button, BorderLayout.PAGE_START);
 
         //Make the center component big, since that's the
         //typical usage of BorderLayout.
-        button = new JButton("Button 2 (CENTER)");
-        button.setPreferredSize(new Dimension(200, 100));
-        pane.add(button, BorderLayout.CENTER);
+        JButton buttonf = new JButton("Forward");
+        buttonf.setPreferredSize(new Dimension(100, 200));
+        pane.add(buttonf, BorderLayout.CENTER);
+        buttonf.addActionListener(this);
+        public void actionPerformed(ActionEvent e)
+        {
+          // TODO import client.java;
+          // client.forward();
+        }
 
-        button = new JButton("Button 3 (LINE_START)");
-        pane.add(button, BorderLayout.LINE_START);
 
-        button = new JButton("Long-Named Button 4 (PAGE_END)");
-        pane.add(button, BorderLayout.PAGE_END);
+        JButton buttonl = new JButton("Left");
+        buttonl.setPreferredSize(new Dimension(100,200));
+        pane.add(buttonl, BorderLayout.LINE_START);
 
-        button = new JButton("5 (LINE_END)");
-        pane.add(button, BorderLayout.LINE_END);
+        JButton buttonrv = new JButton("Reverse");
+        buttonrv.setPreferredSize(new Dimension(300,100));
+        pane.add(buttonrv, BorderLayout.PAGE_END);
+
+        JButton buttonr = new JButton("Right");
+        buttonr.setPreferredSize(new Dimension(100,200));
+        pane.add(buttonr, BorderLayout.LINE_END);
     }
 
     /**
@@ -51,7 +65,7 @@ public class BorderLayoutDemo {
     private static void createAndShowGUI() {
 
         //Create and set up the window.
-        JFrame frame = new JFrame("BorderLayoutDemo");
+        JFrame frame = new JFrame("SCRUMptious Java Client");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         //Set up the content pane.
         addComponentsToPane(frame.getContentPane());
@@ -88,3 +102,35 @@ public class BorderLayoutDemo {
         });
     }
 }
+
+
+/*
+ * Copyright (c) 1995, 2008, Oracle and/or its affiliates. All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ *
+ *   - Redistributions of source code must retain the above copyright
+ *     notice, this list of conditions and the following disclaimer.
+ *
+ *   - Redistributions in binary form must reproduce the above copyright
+ *     notice, this list of conditions and the following disclaimer in the
+ *     documentation and/or other materials provided with the distribution.
+ *
+ *   - Neither the name of Oracle or the names of its
+ *     contributors may be used to endorse or promote products derived
+ *     from this software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
+ * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+ * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+ * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+ * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+ * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+ * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+ * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+ * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+ * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+ * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
