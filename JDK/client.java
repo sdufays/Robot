@@ -8,7 +8,7 @@ import java.net.URI;
 import java.net.http.HttpResponse.BodyHandlers;
 import java.lang.Object;
 
-class client extends Object {
+public class client extends Object {
   public static void main(String[] args) {
   }
   public static void forward(){
