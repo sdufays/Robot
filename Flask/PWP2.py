@@ -14,13 +14,13 @@ def menu():
 # move the robot fwd
 @app.route('/fwd')
 def fwd():
-    rc.forward(1, 15)
+    rc.forward(0.25, 15)
     return 'moved fwd!'
 
 # move the robot rev
 @app.route('/rev')
 def rev():
-    rc.reverse(1, 15)
+    rc.reverse(0.25, 15)
     return 'moved rev!'
 
 # move the robot left
