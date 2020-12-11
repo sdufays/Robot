@@ -26,13 +26,13 @@ def rev():
 # move the robot left
 @app.route('/left')
 def left():
-    rc.left(0.1)
+    rc.left(0.15)
     return 'moved left!'
 
 # move the robot right
 @app.route('/right')
 def right():
-    rc.right(0.1)
+    rc.right(0.15)
     return 'moved right!'
 
 # run the predetermined course
