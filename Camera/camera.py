@@ -5,4 +5,4 @@ camera = PiCamera()
 camera.rotation = 0
 
 sleep(5)
-camera.capture('/home/pi/Desktop/image.jpg')
+camera.capture('/home/pi/image.jpg')
