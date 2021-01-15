@@ -1,6 +1,12 @@
-from flask import Flask, escape, request
+from flask import Flask, escape, request, render_template, Response
 from robotClass import robot
+from camera import VideoCamera
 import time
+import threading
+import os
+
+pi_camera = VideoCamera(flip=False)
+
 
 app = Flask(__name__)
 rc = robot()
@@ -57,6 +63,9 @@ def run():
     rc.forward(float(f), 15)
     return "robot work yes"
 
+@app.route('/stream')
+def stream():
+    return render_template('index.html')
 
 
 app.run(host= '0.0.0.0', port=8080)
