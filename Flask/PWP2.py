@@ -1,19 +1,15 @@
-from flask import Flask, escape, request, render_template, Response
+from flask import Flask, escape, request
 from robotClass import robot
-from camera import Camera
 import time
-import threading
-import os
-
 
 app = Flask(__name__)
 rc = robot()
 
 #fwd 3, right 0.75, fwd 1.75, rev 0.8, right 0.75, fwd 3.05
 
-# @app.route('/')
-# def menu():
-#     return "http://192.168.1.116:8080/run?a=3&b=0.7&c=1.9&d=0.8&e=0.7&f=3.15"
+@app.route('/')
+def menu():
+    return "http://192.168.1.116:8080/run?a=3&b=0.7&c=1.9&d=0.8&e=0.7&f=3.15"
 
 # move the robot fwd
 @app.route('/fwd')
@@ -61,22 +57,6 @@ def run():
     rc.forward(float(f), 15)
     return "robot work yes"
 
-@app.route('/')
-def index():
-    return render_template('index.html')
 
-def gen(camera):
-    while True:
-        frame = camera.get_frame()
-        yield (b'--frame\r\n'
-               b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
-
-@app.route('/video_feed')
-def video_feed():
-    return Response(gen(Camera()),
-                    mimetype='multipart/x-mixed-replace; boundary=frame')
-
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', debug=True)
 
 app.run(host= '0.0.0.0', port=8080)
