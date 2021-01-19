@@ -1,4 +1,4 @@
-from flask import Flask, escape, request
+from flask import Flask, escape, request, render_template
 from robotClass import robot
 import time
 
@@ -8,8 +8,8 @@ rc = robot()
 #fwd 3, right 0.75, fwd 1.75, rev 0.8, right 0.75, fwd 3.05
 
 @app.route('/')
-def menu():
-    return "http://192.168.1.116:8080/run?a=3&b=0.7&c=1.9&d=0.8&e=0.7&f=3.15"
+def home():
+    return render_template("home.html")
 
 # move the robot fwd
 @app.route('/fwd')
