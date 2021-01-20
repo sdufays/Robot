@@ -10,7 +10,7 @@ PAGE="""\
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Random</title>
+    <title>SCRUMptious Holdings, LLC.</title>
 </head>
 <style>
     html, body { height:100%; margin:0; padding:0 }
