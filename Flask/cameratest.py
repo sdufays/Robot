@@ -6,13 +6,6 @@ from threading import Condition
 from http import server
 
 PAGE="""\
-<html>
-<head>
-</head>
-<body>
-<center><img src="stream.mjpg" width="640" height="480"></center>
-</body>
-</html>
 <!DOCTYPE html>
 <html lang="en">
 <head>
