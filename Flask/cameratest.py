@@ -13,6 +13,30 @@ PAGE="""\
 <center><img src="stream.mjpg" width="640" height="480"></center>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Random</title>
+</head>
+<style>
+    html, body { height:100%; margin:0; padding:0 }
+    div { position:fixed; padding: 1.5em; border: 1px solid #000; border-color: black; width:50%; height:50% }
+    #NW { top:0;   left:0   }
+    #NE { top:0;   left:50%; }
+    #SW { top:50%; left:0;   }
+    #SE { top:50%; left: 50% }
+</style>
+<body>
+    <div id="NW">
+        <img src="stream.mjpg" width="640" height="480">
+    </div>
+    <div id="NE"></div>
+    <div id="SE"></div>​
+    <div id="SW"></div>
+</body>
+</html>
+
 """
 
 class StreamingOutput(object):
