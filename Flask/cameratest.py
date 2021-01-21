@@ -10,7 +10,7 @@ PAGE="""\
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Random</title>
+    <title>SCRUMptious Holdings, LLC.</title>
 </head>
 <style>
     html, body { height:100%; margin:0; padding:0 }
@@ -22,7 +22,7 @@ PAGE="""\
 </style>
 <body>
     <div id="NW">
-    <img src="stream.mjpg" width="640" height="480"></div>
+    <img src="stream.mjpg" width="800" height="480"></div>
     <div id="NE"></div>
     <div id="SE"></div>​
     <div id="SW"></div>
