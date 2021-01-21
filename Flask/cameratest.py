@@ -22,7 +22,7 @@ PAGE="""\
 </style>
 <body>
     <div id="NW">
-    <img src="stream.mjpg" width="1030" height="490"></div>
+    <img src="stream.mjpg" width="1025" height="485"></div>
     <div id="NE"></div>
     <div id="SE"></div>​
     <div id="SW"></div>
