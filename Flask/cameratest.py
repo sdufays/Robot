@@ -10,7 +10,7 @@ PAGE="""\
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>SCRUMptious Holdings, LLC.</title>
+    <title>Random</title>
 </head>
 <style>
     html, body { height:100%; margin:0; padding:0 }
@@ -19,15 +19,105 @@ PAGE="""\
     #NE { top:0;   left:50%; }
     #SW { top:50%; left:0;   }
     #SE { top:50%; left: 50% }
+    .grid {
+        display: flex;                       /* establish flex container */
+        flex-wrap: wrap;                     /* enable flex items to wrap */
+        justify-content: space-around;
+        left: 0%;
+        top: 50%;
+       }
+
+.btn-group {
+          flex: 0 0 32%;
+          background-color: #d93ddb;  /* Green background */
+          border: 1px solid black; /* Green border */
+          color: white; /* White text */
+          padding: 10px 24px; /* Some padding */
+          cursor: pointer; /* Pointer/hand icon */
+          float: none; /* Float the buttons side by side */
+          font-size: 50px;
+          box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+          font-family: calibri;
+          width: 33%;
+          height: 33%;
+          <!--resize: horizontal;-->
+          overflow: auto;
+          position: absolute;
+        }
+        .btn-empty {
+          flex: 0 0 32%;
+          background-color: #ffffff;  /* Green background */
+          border: 1px solid black; /* Green border */
+          color: white; /* White text */
+          padding: 10px 24px; /* Some padding */
+          cursor: pointer; /* Pointer/hand icon */
+          float: none; /* Float the buttons side by side */
+          font-size: 50px;
+          box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+          font-family: calibri;
+          width: 33%;
+          height: 33%;
+          <!--resize: horizontal;-->
+          overflow: auto;
+          position: absolute;
+        }
+
+        .btn-fwd {
+            left: 33%;
+           }
+
+        .btn-rev {
+            left: 33%;
+            top: 66%;
+           }
+
+        .btn-left {
+            top: 33%;
+            left:0%
+           }
+
+        .btn-right {
+            left: 66%;
+            top: 33%;
+           }
+
+        .btn-play {
+            left: 33%;
+            top: 33%;
+           }
+
+    .btn-group button:not(:last-child) {
+      border-right: none; /* Prevent double borders */
+    }
+
+    /* Clear floats (clearfix hack) */
+    .btn-group:after {
+      content: "";
+      clear: both;
+      display: table;
+    }
+
+    /*background color on hover */
+    .btn-group button:hover {
+      background-color: #00bfff;
+    }
 </style>
 <body>
-    <div id="NW">
-    <img src="stream.mjpg" width="1025" height="485"></div>
+    <div id="NW"></div>
+     <img src="stream.mjpg" width="50%" height="50%"></div>
     <div id="NE"></div>
     <div id="SE"></div>​
     <div id="SW"></div>
+        <div class="grid">
+        <button class="btn-group btn-fwd">Forward</button>
+        <button class="btn-group btn-left">Left</button>
+        <button class="btn-group btn-play">Play</button>
+        <button class="btn-group btn-right">Right</button>
+        <button class="btn-group btn-rev">Backwards</button>
+        </div></div>
 </body>
 </html>
+
 
 """
 
