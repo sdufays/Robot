@@ -110,6 +110,11 @@ rc = robot()
 
 #fwd 3, right 0.75, fwd 1.75, rev 0.8, right 0.75, fwd 3.05
 
+
+@app.route('/')
+def home():
+    return render_template("home.html")
+
 # move the robot fwd
 @app.route('/fwd')
 def fwd():
