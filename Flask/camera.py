@@ -6,3 +6,9 @@ camera.rotation = 180
 
 sleep(2)
 camera.capture('/home/pi/image.jpg')
+
+djfldjflakjf
+
+djfldjflakjfdfj;aldksjf
+
+asdflsldjflk
