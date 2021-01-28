@@ -96,6 +96,9 @@
 </style>
 <body>
     <form action="/fwd" method="post" id="fwd"></form>
+    <form action="/rev" method="post" id="rev"></form>
+    <form action="/left" method="post" id="left"></form>
+    <form action="/right" method="post" id="right"></form>
     <div id="NW"></div>
         <img src="stream.mjpg" width="50%" height="50%">
     <div id="NE"></div>
@@ -103,10 +106,10 @@
     <div id="SW"></div>
         <div class="grid">
         <button class="btn-group btn-fwd" form="fwd" type="submit" value="Forward">Forward</button>
-        <button class="btn-group btn-left">Left</button>
+        <button class="btn-group btn-left" form="left" type="submit" value="Left">Left</button>
         <button class="btn-group btn-play">Play</button>
-        <button class="btn-group btn-right">Right</button>
-        <button class="btn-group btn-rev">Backwards</button>
+        <button class="btn-group btn-right" form="right" type="submit" value="Right">Right</button>
+        <button class="btn-group btn-rev" form="rev" type="submit" value="Backwards">Backwards</button>
         </div>
 </body>
 </html>
