@@ -1,4 +1,3 @@
-PAGE="""\
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -92,17 +91,18 @@ PAGE="""\
 
     /*background color on hover */
     .btn-group button:hover {
-      background-color: ##1cd6eb;
+      background-color: #1cd6eb;
     }
 </style>
 <body>
+    <form action="/fwd" method="post" id="fwd"></form>
     <div id="NW"></div>
         <img src="stream.mjpg" width="50%" height="50%">
     <div id="NE"></div>
     <div id="SE"></div>​
     <div id="SW"></div>
         <div class="grid">
-        <button class="btn-group btn-fwd">Forward</button>
+        <button class="btn-group btn-fwd" form="fwd" type="submit" value="Forward">Forward</button>
         <button class="btn-group btn-left">Left</button>
         <button class="btn-group btn-play">Play</button>
         <button class="btn-group btn-right">Right</button>
@@ -110,6 +110,3 @@ PAGE="""\
         </div>
 </body>
 </html>
-
-
-"""
