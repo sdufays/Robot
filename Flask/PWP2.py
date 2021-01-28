@@ -13,10 +13,10 @@ def home():
     return render_template("home.html")
 
 # move the robot fwd
-@app.route('/fwd')
+@app.route('/fwd', methods=['POST'])
 def fwd():
     rc.forward(0.1, 30)
-    return 'moved fwd!'
+    return render_template("home.html")
 
 # move the robot rev
 @app.route('/rev')
