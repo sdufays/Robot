@@ -249,9 +249,9 @@ def run():
 @app.route('/')
 def stream():
     with picamera.PiCamera(resolution='1280x720', framerate=60) as camera:
-    output = StreamingOutput()
-    camera.rotation = 180
-    camera.start_recording(output, format='mjpeg')
+        output = StreamingOutput()
+        camera.rotation = 180
+        camera.start_recording(output, format='mjpeg')
     try:
         address = ('192.168.1.116', 8080)
         server = StreamingServer(address, StreamingHandler)
