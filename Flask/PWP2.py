@@ -18,22 +18,22 @@ def fwd():
     return render_template("home.html")
 
 # move the robot rev
-@app.route('/rev')
+@app.route('/rev', methods=['POST'])
 def rev():
     rc.reverse(0.1, 30)
-    return 'moved rev!'
+    return render_template("home.html")
 
 # move the robot left
-@app.route('/left')
+@app.route('/left', methods=['POST'])
 def left():
     rc.left(0.05)
-    return 'moved left!'
+    return render_template("home.html")
 
 # move the robot right
-@app.route('/right')
+@app.route('/right', methods=['POST'])
 def right():
     rc.right(0.05)
-    return 'moved right!'
+    return render_template("home.html")
 
 # run the predetermined course
 @app.route('/run')
