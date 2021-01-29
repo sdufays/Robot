@@ -1,4 +1,5 @@
 from flask import Flask, escape, request, render_template, Response
+from flask_socketio import SocketIO
 from robotClass import robot
 import time
 from camera import Camera
@@ -76,5 +77,18 @@ def video_feed():
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True)
 
+@app.route('/command_line')
+def command_stream():
+    fmt_str = '%(asctime)s - %(message)s'
+    formatter = logging.Formatter(fmt_str)
+    logging.basicConfig(level=logging.INFO, format=fmt_str)
+    logger = logging.getLogger("")
+    class SocketIOHandler(logging.Handler):
+        def emit(self, record):
+            socketio.send(record.getMessage())
+    sio = SocketIOHandler()
+    logger.addHandler(sio)
 
 app.run(host= '0.0.0.0', port=8080)
+
+
