@@ -76,7 +76,10 @@ def run():
 #     fileHandler = logging.FileHandler(loggingfile)
 #     fileHandler.setFormatter(logFormatter)
 
-#     consoleHandler = 
+#     consoleHandler = logging.StreamHandler()
+
+#     rootLogger.addHandler(consoleHandler)
+#     rootLogger.addHandler(fileHandler)
 
 
 app.run(host= '0.0.0.0', port=8080)
