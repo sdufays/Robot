@@ -4,12 +4,17 @@
     <meta charset="UTF-8">
     <title>Random</title>
 </head>
+<!-- <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script> -->
 <!-- <script>
-    $(document).ready(function()){
+    $(document).ready(function(){
       var output = document.getElementById('output');
       var xhr = new XMLHttpRequest();
-      xhr.open('GET','{{ url_for('log_stream') }}', true);
-    }
+      xhr.open('GET','{{ url_for('streamlog') }}', true);
+      xhr.send();
+      setInterval(function() {
+        output.textContent = xhr.responseText;
+      }, 500);
+    });
 </script> -->
 <style>
     html, body { height:100%; margin:0; padding:0 }
