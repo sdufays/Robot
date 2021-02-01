@@ -12,11 +12,6 @@ from camera import Camera
 app = Flask(__name__)
 rc = robot()
 #fwd 3, right 0.75, fwd 1.75, rev 0.8, right 0.75, fwd 3.05
-
-@app.route('/plswork')
-def index():
-    return render_template('index.html')
-
 def gen(camera):
     while True:
         frame = camera.get_frame()
