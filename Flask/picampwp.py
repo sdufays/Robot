@@ -1,10 +1,6 @@
 from flask import Flask, escape, request, render_template, Response
 from robotClass import robot
 import time
-import socket
-import io
-import logging
-from flask import Flask, render_template, Response
 from camera import Camera
 
 #maybe???
