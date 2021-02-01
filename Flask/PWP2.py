@@ -84,7 +84,7 @@ def run():
     rc.forward(float(f), 15)
     return "robot work yes"
 
-@APP.route("/log_stream", methods=["GET"])
+@app.route("/log_stream", methods=["GET"])
 def stream():
     """returns logging information"""
     return Response(flask_logger(), mimetype="text/plain", content_type="text/event-stream")
