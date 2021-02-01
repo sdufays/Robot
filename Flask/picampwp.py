@@ -81,16 +81,5 @@ def run():
     time.sleep(0.5)
     rc.forward(float(f), 15)
     return "robot work yes"
-
-# @app.route('/streamlog')
-# def terminal():
-#     logFormatter = logging.Formatter("%(asctime)s [%(levelname)-5.5s] %(message)s")
-#     rootLogger = logging.getLogger()
-
-#     fileHandler = logging.FileHandler(loggingfile)
-#     fileHandler.setFormatter(logFormatter)
-
-#     consoleHandler = 
-
-
+    
 app.run(host= '0.0.0.0', port=8080)
