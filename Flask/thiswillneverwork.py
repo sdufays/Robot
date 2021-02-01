@@ -20,6 +20,7 @@ def stream():
         camera.capture('image.jpg')
         time.sleep(0.1)
         os.remove('image.jpg')
+        x+=1
 
 #<img src="image.jpg" alt="lmao alizain can't code we're all failing this project">
 
