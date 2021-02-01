@@ -1,6 +1,6 @@
 from flask import Flask, escape, request, render_template, Response
 from robotClass import robot
-from flask.ext.socketio import SocketIO, send
+# from flask.ext.socketio import SocketIO, send
 import time
 import picamera
 import socket
