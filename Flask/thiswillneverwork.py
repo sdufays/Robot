@@ -18,7 +18,7 @@ def stream():
     x=0
     for x in range(1000000000):
         camera.capture('image.jpg')
-        time.sleep(0.25)
+        time.sleep(0.1)
         os.remove('image.jpg')
 
 #<img src="image.jpg" alt="lmao alizain can't code we're all failing this project">
