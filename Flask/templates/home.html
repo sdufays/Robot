@@ -12,8 +12,8 @@
     #SW { top:50%; left:0;   }
     #SE { top:50%; left: 50% }
     .grid {
-        display: flex;                       /* establish flex container */
-        flex-wrap: wrap;                     /* enable flex items to wrap */
+        display: flex;                       
+        flex-wrap: wrap;                     
         justify-content: space-around;
         left: 0%;
         top: 50%;
@@ -21,12 +21,12 @@
 
 .btn-group {
           flex: 0 0 32%;
-          background-color: #d93ddb;  /* Green background */
-          border: 1px solid black; /* Green border */
-          color: white; /* White text */
-          padding: 10px 24px; /* Some padding */
-          cursor: pointer; /* Pointer/hand icon */
-          float: none; /* Float the buttons side by side */
+          background-color: #d93ddb; 
+          border: 1px solid black;
+          color: white; 
+          padding: 10px 24px;
+          cursor: pointer;
+          float: none; 
           font-size: 50px;
           box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
           font-family: calibri;
@@ -38,12 +38,12 @@
         }
         .btn-empty {
           flex: 0 0 32%;
-          background-color: #ffffff;  /* Green background */
-          border: 1px solid black; /* Green border */
-          color: white; /* White text */
-          padding: 10px 24px; /* Some padding */
-          cursor: pointer; /* Pointer/hand icon */
-          float: none; /* Float the buttons side by side */
+          background-color: #ffffff;  
+          border: 1px solid black;
+          color: white; 
+          padding: 10px 24px;
+          cursor: pointer;
+          float: none; 
           font-size: 50px;
           box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
           font-family: calibri;
@@ -79,17 +79,15 @@
            }
 
     .btn-group button:not(:last-child) {
-      border-right: none; /* Prevent double borders */
+      border-right: none; 
     }
 
-    /* Clear floats (clearfix hack) */
     .btn-group:after {
       content: "";
       clear: both;
       display: table;
     }
 
-    /*background color on hover */
     .btn-group button:hover {
       background-color: #1cd6eb;
     }
