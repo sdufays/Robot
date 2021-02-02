@@ -18,7 +18,7 @@ def index():
 
 @app.route('/video_feed')
 def video_feed():
-     Create an in-memory stream
+    #Create an in-memory stream
     my_stream = BytesIO()
     camera = PiCamera()
     camera.start_preview()
