@@ -1,7 +1,7 @@
 from flask import Flask, escape, request, render_template, Response
 from robotClass import robot
 import time
-from camera import Camera
+from picamera import PiCamera
 
 #maybe???
 #https://raspberrypi.stackexchange.com/questions/42759/streaming-raspberry-pi-camera-to-html-webpage-using-picamera-and-flask
@@ -17,14 +17,17 @@ def index():
     return render_template('index.html')
 
 def gen(camera):
-    while True:
-        frame = camera.get_frame()
-        yield (b'--frame\r\n'
-               b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
+    # Create an in-memory stream
+    my_stream = BytesIO()
+    camera = PiCamera()
+    camera.start_preview()
+    # Camera warm-up time
+    sleep(2)
+    camera.capture(my_stream, 'jpeg')
 
 @app.route('/video_feed')
 def video_feed():
-    return Response(gen(Camera()),
+    return Response(gen(PiCamera()),
                     mimetype='multipart/x-mixed-replace; boundary=frame')
 
 @app.route('/')
