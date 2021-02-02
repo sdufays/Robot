@@ -17,18 +17,16 @@ def index():
     return render_template('index.html')
 
 def gen(camera):
-    # Create an in-memory stream
+
+@app.route('/video_feed')
+def video_feed():
+     Create an in-memory stream
     my_stream = BytesIO()
     camera = PiCamera()
     camera.start_preview()
     # Camera warm-up time
     sleep(2)
     camera.capture(my_stream, 'jpeg')
-
-@app.route('/video_feed')
-def video_feed():
-    return Response(gen(PiCamera()),
-                    mimetype='multipart/x-mixed-replace; boundary=frame')
 
 @app.route('/')
 def home():
