@@ -10,20 +10,28 @@ import datetime
 
 
 app = Flask(__name__)
-# app.debug = True
+from camera_pi import Camera
 rc = robot()
-camera = picamera.camera
 
 #fwd 3, right 0.75, fwd 1.75, rev 0.8, right 0.75, fwd 3.05
-
-@app.route('/streamtest')
-def stream():
-    Frame = picamera.capture()
-
-
 @app.route('/')
-def home():
-    return render_template("home.html")
+def index():
+    """Video streaming home page."""
+    return render_template('index.html')
+ 
+def gen(camera):
+    """Video streaming generator function."""
+    while True:
+        frame = camera.get_frame()
+        yield (b'--frame\r\n'
+               b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
+
+@app.route('/video_feed')
+def video_feed():
+    """Video streaming route. Put this in the src attribute of an img tag."""
+    return Response(gen(Camera()),
+                    mimetype='multipart/x-mixed-replace; boundary=frame')
+
 
 # move the robot fwd
 @app.route('/fwd', methods=['POST'])
@@ -71,4 +79,4 @@ def run():
     rc.forward(float(f), 15)
     return "robot work yes"
 
-app.run(host= '0.0.0.0', port=8080)
+app.run(host= '0.0.0.0', port=8080, debug=True, threaded=True)
