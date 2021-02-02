@@ -17,7 +17,7 @@ rc = robot()
 @app.route('/')
 def index():
     """Video streaming home page."""
-    return render_template('index.html')
+    return render_template('home.html')
  
 def gen(camera):
     """Video streaming generator function."""
