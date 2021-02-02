@@ -16,8 +16,6 @@ rc = robot()
 def index():
     return render_template('index.html')
 
-def gen(camera):
-
 @app.route('/video_feed')
 def video_feed():
      Create an in-memory stream
