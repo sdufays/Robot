@@ -14,19 +14,6 @@ app = Flask(__name__)
 rc = robot()
 camera = picamera.camera
 
-logger.add("app/static/job.log", format="{time} - {message}")
-
-def flask_logger():
-    """creates logging information"""
-    with open("app/static/job.log") as log_info:
-        for i in range(25):
-            logger.info(f"iteration #{i}")
-            data = log_info.read()
-            yield data.encode()
-            sleep(1)
-        # Create empty job.log, old logging will be deleted
-        open("app/static/job.log", 'w').close()
-
 #fwd 3, right 0.75, fwd 1.75, rev 0.8, right 0.75, fwd 3.05
 
 @app.route('/streamtest')
@@ -83,10 +70,5 @@ def run():
     time.sleep(0.5)
     rc.forward(float(f), 15)
     return "robot work yes"
-
-@app.route("/log_stream", methods=["GET"])
-def stream():
-    """returns logging information"""
-    return Response(flask_logger(), mimetype="text/plain", content_type="text/event-stream")
 
 app.run(host= '0.0.0.0', port=8080)
