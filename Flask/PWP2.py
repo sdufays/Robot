@@ -7,25 +7,25 @@ import io
 import logging
 import datetime
 
-loggingfile = open("loggingfile.txt", "w")
-
 app = Flask(__name__)
 from camera_pi import Camera
 rc = robot()
 
-logFormatter = logging.Formatter("%(asctime)s [%(levelname)-5.5s] %(message)s")
-rootLogger = logging.getLogger()
-fileHandler = logging.FileHandler(loggingfile)
-fileHandler.setFormatter(logFormatter)
-consoleHandler = logging.StreamHandler()
-rootLogger.addHandler(consoleHandler)
-rootLogger.addHandler(fileHandler)
+with open("loggingfile.txt", "w") as loggingfile:
+    logFormatter = logging.Formatter("%(asctime)s [%(levelname)-5.5s] %(message)s")
+    rootLogger = logging.getLogger()
+    fileHandler = logging.FileHandler(loggingfile)
+    fileHandler.setFormatter(logFormatter)
+    consoleHandler = logging.StreamHandler()
+    rootLogger.addHandler(consoleHandler)
+    rootLogger.addHandler(fileHandler)
 
 #fwd 3, right 0.75, fwd 1.75, rev 0.8, right 0.75, fwd 3.05
 
 @app.route('/log_stream')
 def log_stream():
-    return loggingfile.read()
+    with open("loggingfile.txt", "r") as loggingfile:
+        return loggingfile.read()
 
 @app.route('/')
 def index():
