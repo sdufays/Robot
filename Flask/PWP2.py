@@ -7,7 +7,7 @@ import io
 import logging
 import datetime
 
-loggingfile = open("loggingfile.txt", "w+")
+loggingfile = open("loggingfile.txt", "w")
 
 app = Flask(__name__)
 from camera_pi import Camera
