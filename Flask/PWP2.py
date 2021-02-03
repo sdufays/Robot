@@ -15,7 +15,7 @@ app = Flask(__name__)
 from camera_pi import Camera
 rc = robot()
 
-with open("loggingfile.txt", "w") as loggingfile:
+with open("loggingfile.txt", "w+") as loggingfile:
     logFormatter = logging.Formatter("%(asctime)s [%(levelname)-5.5s] %(message)s")
     rootLogger = logging.getLogger()
     fileHandler = logging.FileHandler(loggingfile)
