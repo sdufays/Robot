@@ -6,6 +6,10 @@ import socket
 import io
 import logging
 import datetime
+import os
+
+if os.path.exists("loggingfile.txt"):
+  os.remove("loggingfile.txt")
 
 app = Flask(__name__)
 from camera_pi import Camera
