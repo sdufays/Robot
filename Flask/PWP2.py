@@ -14,7 +14,9 @@ rc = robot()
 
 #fwd 3, right 0.75, fwd 1.75, rev 0.8, right 0.75, fwd 3.05
 
-
+@app.route('/log_stream')
+def logstream():
+    return "hello this is log"
 
 @app.route('/')
 def index():
