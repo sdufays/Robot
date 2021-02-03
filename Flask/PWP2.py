@@ -1,4 +1,3 @@
-
 from flask import Flask, escape, request, render_template, Response
 from robotClass import robot
 import time
@@ -8,6 +7,7 @@ import io
 import logging
 import datetime
 
+loggingfile = open("loggingfile.txt", "w+")
 
 app = Flask(__name__)
 from camera_pi import Camera
@@ -15,7 +15,7 @@ rc = robot()
 
 logFormatter = logging.Formatter("%(asctime)s [%(levelname)-5.5s] %(message)s")
 rootLogger = logging.getLogger()
-fileHandler = logging.FileHandler(loggingfile.log)
+fileHandler = logging.FileHandler(loggingfile)
 fileHandler.setFormatter(logFormatter)
 consoleHandler = logging.StreamHandler()
 rootLogger.addHandler(consoleHandler)
@@ -25,7 +25,7 @@ rootLogger.addHandler(fileHandler)
 
 @app.route('/log_stream')
 def log_stream():
-    return rootLogger.info()
+    return loggingfile.read()
 
 @app.route('/')
 def index():
