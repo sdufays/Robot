@@ -18,7 +18,7 @@ rc = robot()
 with open("loggingfile.txt", "w+") as loggingfile:
     logFormatter = logging.Formatter("%(asctime)s [%(levelname)-5.5s] %(message)s")
     rootLogger = logging.getLogger()
-    fileHandler = logging.FileHandler(loggingfile)
+    fileHandler = logging.FileHandler("loggingfile.txt")
     fileHandler.setFormatter(logFormatter)
     consoleHandler = logging.StreamHandler()
     rootLogger.addHandler(consoleHandler)
