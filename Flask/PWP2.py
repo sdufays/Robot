@@ -1,3 +1,4 @@
+
 from flask import Flask, escape, request, render_template, Response
 from robotClass import robot
 import time
@@ -14,7 +15,7 @@ rc = robot()
 
 logFormatter = logging.Formatter("%(asctime)s [%(levelname)-5.5s] %(message)s")
 rootLogger = logging.getLogger()
-fileHandler = logging.FileHandler(loggingfile)
+fileHandler = logging.FileHandler(loggingfile.log)
 fileHandler.setFormatter(logFormatter)
 consoleHandler = logging.StreamHandler()
 rootLogger.addHandler(consoleHandler)
