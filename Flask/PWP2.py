@@ -14,6 +14,25 @@ from camera_pi import Camera
 rc = robot()
 
 #fwd 3, right 0.75, fwd 1.75, rev 0.8, right 0.75, fwd 3.05
+
+logger.add("app/static/job.log", format="{time} - {message}")
+
+def root():
+    """index page"""
+    return render_template("home.html")
+
+def flask_logger():
+    """creates logging information"""
+    with open("app/static/job.log") as log_info:
+        for i in range(25):
+            logger.info(f"iteration #{i}")
+            data = log_info.read()
+            yield data.encode()
+            sleep(1)
+        # Create empty job.log, old logging will be deleted
+        open("app/static/job.log", 'w').close()
+
+
 @app.route('/')
 def index():
     """Video streaming home page."""
@@ -31,6 +50,13 @@ def video_feed():
     """Video streaming route. Put this in the src attribute of an img tag."""
     return Response(gen(Camera()),
                     mimetype='multipart/x-mixed-replace; boundary=frame')
+
+
+@app.route("/log_stream", methods=["GET"])
+def stream():
+    """returns logging information"""
+    return Response(flask_logger(), mimetype="text/plain", content_type="text/event-stream")
+
 
 
 # move the robot fwd
