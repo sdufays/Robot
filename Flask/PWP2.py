@@ -29,7 +29,7 @@ with open("loggingfile.txt", "w+") as loggingfile:
 @app.route('/log_stream')
 def log_stream():
     with open("loggingfile.txt", "r") as loggingfile:
-        return loggingfile.readlines()[-25:]
+        return loggingfile.readlines()[:-25]
 
 @app.route('/')
 def index():
