@@ -16,6 +16,19 @@
         }, 500);
       });
 </script>
+<script>
+  function callButton(link) {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        document.getElementById("demo").innerHTML =
+        this.responseText;
+      }
+      };
+    xhttp.open("GET", link, true);
+    xhttp.send();
+  }
+</script>
 <style>
     html, body { height:100%; margin:0; padding:0 }
     div { position:fixed; border: 1px solid #000; border-color: black; width:50%; height:50% }
@@ -118,16 +131,21 @@
     <div id="NE"></div>
         <div class="logging_window">
           <pre id="output"></pre>
-        </div>
+        </div> 
       </div>
     <div id="SE"></div>​
     <div id="SW"></div>
         <div class="grid">
-        <button class="btn-group btn-fwd" form="fwd" type="submit" value="Forward">Forward</button>
+        <!-- <button class="btn-group btn-fwd" form="fwd" type="submit" value="Forward">Forward</button> 
         <button class="btn-group btn-left" form="left" type="submit" value="Left">Left</button>
         <button class="btn-group btn-play">Play</button>
         <button class="btn-group btn-right" form="right" type="submit" value="Right">Right</button>
-        <button class="btn-group btn-rev" form="rev" type="submit" value="Backwards">Backwards</button>
+        <button class="btn-group btn-rev" form="rev" type="submit" value="Backwards">Backwards</button> -->
+        <button class="btn-group btn-fwd" type="button" onclick="callButton('192.168.1.101:8080/fwd')">Forward</button>
+        <button class="btn-group btn-left" type="button" onclick="callButton('192.168.1.101:8080/left')">Left</button>
+        <button class="btn-group btn-play">Play</button>
+        <button class="btn-group btn-right" type="button" onclick="callButton('192.168.1.101:8080/right')">Right</button>
+        <button class="btn-group btn-rev" type="button" onclick="callButton('192.168.1.101:8080/rev')">Reverse</button>
         </div>
 </body>
 </html>
