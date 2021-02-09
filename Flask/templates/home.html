@@ -17,11 +17,11 @@
       });
 </script>
 <script>
-  function callButton(link) {
+  function callButton(link, id) {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
-        document.getElementById("demo").innerHTML =
+        document.getElementById(id).innerHTML =
         this.responseText;
       }
       };
@@ -122,10 +122,10 @@
 
 </style>
 <body>
-    <form action="/fwd" method="post" id="fwd"></form>
+    <!-- <form action="/fwd" method="post" id="fwd"></form>
     <form action="/rev" method="post" id="rev"></form>
     <form action="/left" method="post" id="left"></form>
-    <form action="/right" method="post" id="right"></form>
+    <form action="/right" method="post" id="right"></form> -->
     <div id="NW"></div>
       <img src="{{ url_for('video_feed') }}" width="50%" height="50%">
     <div id="NE"></div>
@@ -141,11 +141,11 @@
         <button class="btn-group btn-play">Play</button>
         <button class="btn-group btn-right" form="right" type="submit" value="Right">Right</button>
         <button class="btn-group btn-rev" form="rev" type="submit" value="Backwards">Backwards</button> -->
-        <button class="btn-group btn-fwd" type="button" onclick="callButton('192.168.1.101:8080/fwd')">Forward</button>
-        <button class="btn-group btn-left" type="button" onclick="callButton('192.168.1.101:8080/left')">Left</button>
+        <button class="btn-group btn-fwd" type="button" id="fwd" onclick="callButton('192.168.101:8080/fwd', 'fwd')">Forward</button>
+        <button class="btn-group btn-left" type="button" id="left" onclick="callButton('192.168.101:8080/left', 'left')">Left</button>
         <button class="btn-group btn-play">Play</button>
-        <button class="btn-group btn-right" type="button" onclick="callButton('192.168.1.101:8080/right')">Right</button>
-        <button class="btn-group btn-rev" type="button" onclick="callButton('192.168.1.101:8080/rev')">Reverse</button>
+        <button class="btn-group btn-right" type="button" id="right" onclick="callButton('192.168.101:8080/right', 'right')">Right</button>
+        <button class="btn-group btn-rev" type="button" id="rev" onclick="callButton('192.168.101:8080/rev', 'rev')">Reverse</button>
         </div>
 </body>
 </html>
