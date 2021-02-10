@@ -50,7 +50,7 @@ def video_feed():
                     mimetype='multipart/x-mixed-replace; boundary=frame')
 
 # move the robot fwd
-@app.route('/fwd')
+@app.route('/fwd', methods=['GET'])
 def fwd():
     rc.forward(0.1, 30)
     return render_template("home.html")
