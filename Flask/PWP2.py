@@ -52,7 +52,7 @@ def video_feed():
 # move the robot fwd
 @app.route('/fwd', methods=['GET'])
 def fwd():
-    rc.forward(0.1, 30)
+    # rc.forward(0.1, 30)
     return render_template("home.html")
 
 # move the robot rev
