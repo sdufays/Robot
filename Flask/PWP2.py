@@ -53,25 +53,25 @@ def video_feed():
 @app.route('/fwd', methods=['GET'])
 def fwd():
     rc.forward(0.1, 30)
-    return
+    return True
 
 # move the robot rev
 @app.route('/rev', methods=['GET'])
 def rev():
     rc.reverse(0.1, 30)
-    return
+    return True
 
 # move the robot left
 @app.route('/left', methods=['GET'])
 def left():
     rc.left(0.05)
-    return
+    return True
 
 # move the robot right
 @app.route('/right', methods=['GET'])
 def right():
     rc.right(0.05)
-    return
+    return True
 
 # run the predetermined course
 @app.route('/run')
