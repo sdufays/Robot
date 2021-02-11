@@ -50,25 +50,25 @@ def video_feed():
                     mimetype='multipart/x-mixed-replace; boundary=frame')
 
 # move the robot fwd
-@app.route('/fwd', methods=['POST'])
+@app.route('/fwd', methods=['GET'])
 def fwd():
     rc.forward(0.1, 30)
     return render_template("home.html")
 
 # move the robot rev
-@app.route('/rev', methods=['POST'])
+@app.route('/rev', methods=['GET'])
 def rev():
     rc.reverse(0.1, 30)
     return render_template("home.html")
 
 # move the robot left
-@app.route('/left', methods=['POST'])
+@app.route('/left', methods=['GET'])
 def left():
     rc.left(0.05)
     return render_template("home.html")
 
 # move the robot right
-@app.route('/right', methods=['POST'])
+@app.route('/right', methods=['GET'])
 def right():
     rc.right(0.05)
     return render_template("home.html")
