@@ -5,19 +5,6 @@
     <title>Random</title>
 </head>
 <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-<!-- <script>
-      $(document).ready(function(){
-        setInterval(function() {
-          var output = document.getElementById('output');
-          var xhr = new XMLHttpRequest();
-          xhr.open('GET', '{{ url_for('log_stream') }}', true);
-          xhr.send();
-          xhr.onload = function () {
-            output.textContent = xhr.responseText;
-          };
-          }, 5000);
-      });
-</script> -->
 <script>
   function callButton(link, id) {
     var xhttp = new XMLHttpRequest();
@@ -125,10 +112,6 @@
 
 </style>
 <body>
-    <!-- <form action="/fwd" method="post" id="fwd"></form>
-    <form action="/rev" method="post" id="rev"></form>
-    <form action="/left" method="post" id="left"></form>
-    <form action="/right" method="post" id="right"></form> -->
     <div id="NW"></div>
       <img src="{{ url_for('video_feed') }}" width="50%" height="50%">
     <div id="NE"></div>
@@ -139,11 +122,6 @@
     <div id="SE"></div>​
     <div id="SW"></div>
         <div class="grid">
-        <!-- <button class="btn-group btn-fwd" form="fwd" type="submit" value="Forward">Forward</button> 
-        <button class="btn-group btn-left" form="left" type="submit" value="Left">Left</button>
-        <button class="btn-group btn-play">Play</button>
-        <button class="btn-group btn-right" form="right" type="submit" value="Right">Right</button>
-        <button class="btn-group btn-rev" form="rev" type="submit" value="Backwards">Backwards</button> -->
         <button class="btn-group btn-fwd" type="button" id="fwd" onclick="callButton('{{ url_for('fwd') }}', 'fwd')">Forward</button>
         <button class="btn-group btn-left" type="button" id="left" onclick="callButton('{{ url_for('left') }}', 'left')">Left</button>
         <button class="btn-group btn-play">Play</button>
