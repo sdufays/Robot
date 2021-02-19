@@ -55,16 +55,16 @@ def index():
 @app.route(video_feed)
 def video_feed():
     while(True):
-    # Capture frame-by-frame
-    ret, frame = cap.read()
+        # Capture frame-by-frame
+        ret, frame = cap.read()
 
-    # Our operations on the frame come here
-    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+        # Our operations on the frame come here
+        gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
-    # Display the resulting frame
-    cv2.imshow('frame',gray)
-    if cv2.waitKey(1) & 0xFF == ord('q'):
-        break
+        # Display the resulting frame
+        cv2.imshow('frame',gray)
+        if cv2.waitKey(1) & 0xFF == ord('q'):
+            break
 
 # move the robot fwd
 @app.route('/fwd', methods=['GET'])
