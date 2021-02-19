@@ -7,8 +7,8 @@ import io
 import logging
 import datetime
 import os
-import cv2
-import numpy as np
+# import cv2
+# import numpy as np
 
 if os.path.exists("loggingfile.txt"):
   os.remove("loggingfile.txt")
