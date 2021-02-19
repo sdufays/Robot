@@ -52,7 +52,7 @@ def index():
 #     return Response(gen(Camera()),
 #                     mimetype='multipart/x-mixed-replace; boundary=frame')
 
-@app.route(video_feed)
+@app.route('/video_feed')
 def video_feed():
     while(True):
         # Capture frame-by-frame
