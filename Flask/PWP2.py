@@ -39,32 +39,32 @@ def index():
     """Video streaming home page."""
     return render_template('home.html')
  
-# def gen(camera):
-#     """Video streaming generator function."""
-#     while True:
-#         frame = camera.get_frame()
-#         yield (b'--frame\r\n'
-#                b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
-
-# @app.route('/video_feed')
-# def video_feed():
-#     """Video streaming route. Put this in the src attribute of an img tag."""
-#     return Response(gen(Camera()),
-#                     mimetype='multipart/x-mixed-replace; boundary=frame')
+def gen(camera):
+    """Video streaming generator function."""
+    while True:
+        frame = camera.get_frame()
+        yield (b'--frame\r\n'
+               b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
 
 @app.route('/video_feed')
 def video_feed():
-    while(True):
-        # Capture frame-by-frame
-        ret, frame = cap.read()
+    """Video streaming route. Put this in the src attribute of an img tag."""
+    return Response(gen(Camera()),
+                    mimetype='multipart/x-mixed-replace; boundary=frame')
 
-        # Our operations on the frame come here
-        gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+# @app.route('/video_feed')
+# def video_feed():
+#     while(True):
+#         # Capture frame-by-frame
+#         ret, frame = cap.read()
 
-        # Display the resulting frame
-        cv2.imshow('frame',gray)
-        if cv2.waitKey(1) & 0xFF == ord('q'):
-            break
+#         # Our operations on the frame come here
+#         gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+
+#         # Display the resulting frame
+#         cv2.imshow('frame',gray)
+#         if cv2.waitKey(1) & 0xFF == ord('q'):
+#             break
 
 # move the robot fwd
 @app.route('/fwd', methods=['GET'])
