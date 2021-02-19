@@ -7,6 +7,8 @@ import io
 import logging
 import datetime
 import os
+import cv2
+import numpy as np
 
 if os.path.exists("loggingfile.txt"):
   os.remove("loggingfile.txt")
@@ -25,6 +27,7 @@ with open("loggingfile.txt", "w+") as loggingfile:
     rootLogger.addHandler(fileHandler)
 
 #fwd 3, right 0.75, fwd 1.75, rev 0.8, right 0.75, fwd 3.05
+cap = cv2.VideoCapture(0)
 
 @app.route('/log_stream')
 def log_stream():
@@ -36,18 +39,32 @@ def index():
     """Video streaming home page."""
     return render_template('home.html')
  
-def gen(camera):
-    """Video streaming generator function."""
-    while True:
-        frame = camera.get_frame()
-        yield (b'--frame\r\n'
-               b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
+# def gen(camera):
+#     """Video streaming generator function."""
+#     while True:
+#         frame = camera.get_frame()
+#         yield (b'--frame\r\n'
+#                b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
 
-@app.route('/video_feed')
+# @app.route('/video_feed')
+# def video_feed():
+#     """Video streaming route. Put this in the src attribute of an img tag."""
+#     return Response(gen(Camera()),
+#                     mimetype='multipart/x-mixed-replace; boundary=frame')
+
+@app.route(video_feed)
 def video_feed():
-    """Video streaming route. Put this in the src attribute of an img tag."""
-    return Response(gen(Camera()),
-                    mimetype='multipart/x-mixed-replace; boundary=frame')
+    while(True):
+    # Capture frame-by-frame
+    ret, frame = cap.read()
+
+    # Our operations on the frame come here
+    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+
+    # Display the resulting frame
+    cv2.imshow('frame',gray)
+    if cv2.waitKey(1) & 0xFF == ord('q'):
+        break
 
 # move the robot fwd
 @app.route('/fwd', methods=['GET'])
