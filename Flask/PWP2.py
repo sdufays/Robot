@@ -27,7 +27,7 @@ with open("loggingfile.txt", "w+") as loggingfile:
     rootLogger.addHandler(fileHandler)
 
 #fwd 3, right 0.75, fwd 1.75, rev 0.8, right 0.75, fwd 3.05
-cap = cv2.VideoCapture(0)
+# cap = cv2.VideoCapture(0)
 
 @app.route('/log_stream')
 def log_stream():
