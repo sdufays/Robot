@@ -113,3 +113,5 @@ def run():
     return "robot work yes"
 
 app.run(host= '0.0.0.0', port=8080, debug=True, threaded=True)
+cap.release()
+cv2.destroyAllWindows()
