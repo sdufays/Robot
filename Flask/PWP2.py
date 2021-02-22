@@ -9,6 +9,8 @@ import datetime
 import os
 import cv2
 import numpy as np
+from picamera.array import PiRGBArray
+from picamera import PiCamera
 
 if os.path.exists("loggingfile.txt"):
   os.remove("loggingfile.txt")
@@ -48,10 +50,10 @@ def index():
 #         yield (b'--frame\r\n'
 #                b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
 
-camera = picamera.PiCamera()
+camera = PiCamera()
 camera.resolution = (640, 480)
 camera.framerate = 30
-rawCapture = picamera.PiRGBArray(camera, size=(640, 480))
+rawCapture = PiRGBArray(camera, size=(640, 480))
 
 # capture frames from the camera
 for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
