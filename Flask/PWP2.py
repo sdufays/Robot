@@ -7,8 +7,8 @@ import io
 import logging
 import datetime
 import os
-# import cv2
-# import numpy as np
+import cv2
+import numpy as np
 
 if os.path.exists("loggingfile.txt"):
   os.remove("loggingfile.txt")
@@ -39,20 +39,25 @@ def index():
     """Video streaming home page."""
     return render_template('home.html')
  
-def gen(camera):
-    """Video streaming generator function."""
-    while True:
-        # cap.release()
-        # cv2.destroyAllWindows() 
-        frame = camera.get_frame()
-        yield (b'--frame\r\n'
-               b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
+# def gen(camera):
+#     """Video streaming generator function."""
+#     while True:
+#         # cap.release()
+#         # cv2.destroyAllWindows() 
+#         frame = camera.get_frame()
+#         yield (b'--frame\r\n'
+#                b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
 
 @app.route('/video_feed')
 def video_feed():
-    """Video streaming route. Put this in the src attribute of an img tag."""
-    return Response(gen(Camera()),
-                    mimetype='multipart/x-mixed-replace; boundary=frame')
+    cap = cv2.VideoCapture('http://192.168.1.7:8080/')
+    while(True):
+        ret, frame = cap.read()
+        cv2.imshow('frame',frame)
+        if cv2.waitKey(1) & 0xFF == ord('q'):
+            break
+    cap.release()
+    cv2.destroyAllWindows()
 
 # move the robot fwd
 @app.route('/fwd', methods=['GET'])
