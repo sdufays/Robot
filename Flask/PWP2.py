@@ -51,7 +51,7 @@ def index():
 camera = picamera.PiCamera()
 camera.resolution = (640, 480)
 camera.framerate = 30
-rawCapture = PiRGBArray(camera, size=(640, 480))
+rawCapture = picamera.PiRGBArray(camera, size=(640, 480))
 
 # capture frames from the camera
 for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
