@@ -54,19 +54,6 @@ def video_feed():
     return Response(gen(Camera()),
                     mimetype='multipart/x-mixed-replace; boundary=frame')
 
-# @app.route('/video_feed')
-# def video_feed():
-#     cap = cv2.VideoCapture(0)
-#     while(True):
-#         # Capture frame-by-frame
-#         ret, frame = cap.read()
-#         # Our operations on the frame come here
-#         gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-#         # Display the resulting frame
-#         cv2.imshow('frame',gray)
-#         if cv2.waitKey(1) & 0xFF == ord('q'):
-#             break
-
 # move the robot fwd
 @app.route('/fwd', methods=['GET'])
 def fwd():
