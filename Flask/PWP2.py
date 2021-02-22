@@ -48,12 +48,23 @@ def index():
 #         yield (b'--frame\r\n'
 #                b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
 
+camera = PiCamera()
+camera.resolution = (640, 480)
+camera.framerate = 30
+rawCapture = PiRGBArray(camera, size=(640, 480))
+
+# capture frames from the camera
+for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
+	# grab the raw NumPy array representing the image, then initialize the timestamp
+	# and occupied/unoccupied text
+	image = frame.array
+
 @app.route('/video_feed')
 def video_feed():
-    cap = cv2.VideoCapture('http://192.168.1.7:8080/')
+    #cap = cv2.VideoCapture('http://192.168.1.7:8080/')
     while(True):
         ret, frame = cap.read()
-        cv2.imshow('frame',frame)
+        cv2.imshow('frame',image)
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
     cap.release()
