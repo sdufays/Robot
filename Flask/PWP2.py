@@ -45,7 +45,6 @@ camera = PiCamera()
 camera.resolution = (320, 240)
 camera.framerate = 30
 rawCapture = PiRGBArray(camera, size=(320, 240))
-rawCapture = io.BytesIO()
 
 # capture frames from the camera
 for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
@@ -53,8 +52,6 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
 	# and occupied/unoccupied text
     image = frame.array
     rawCapture.truncate()
-    rawCapture.seek(0)
-    if process(rawCapture):
         break
 
 @app.route('/video_feed')
