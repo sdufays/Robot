@@ -56,11 +56,11 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
 def video_feed():
     #cap = cv2.VideoCapture('http://192.168.1.101:8080/')
     while(True):
-        ret, frame = cap.read()
+        #ret, frame = cap.read()
         cv2.imshow('frame',image)
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
-    cap.release()
+    #cap.release()
     cv2.destroyAllWindows()
 
 # move the robot fwd
