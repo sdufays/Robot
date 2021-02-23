@@ -51,6 +51,10 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
 	# grab the raw NumPy array representing the image, then initialize the timestamp
 	# and occupied/unoccupied text
 	image = frame.array
+    rawCapture.truncate()
+    rawCapture.seek(0)
+        if process(rawCapture):
+            break
 
 @app.route('/video_feed')
 def video_feed():
