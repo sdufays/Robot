@@ -40,15 +40,6 @@ def log_stream():
 def index():
     """Video streaming home page."""
     return render_template('home.html')
- 
-# def gen(camera):
-#     """Video streaming generator function."""
-#     while True:
-#         # cap.release()
-#         # cv2.destroyAllWindows() 
-#         frame = camera.get_frame()
-#         yield (b'--frame\r\n'
-#                b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
 
 camera = PiCamera()
 camera.resolution = (320, 240)
@@ -63,7 +54,7 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
 
 @app.route('/video_feed')
 def video_feed():
-    #cap = cv2.VideoCapture('http://192.168.1.7:8080/')
+    #cap = cv2.VideoCapture('http://192.168.1.101:8080/')
     while(True):
         ret, frame = cap.read()
         cv2.imshow('frame',image)
