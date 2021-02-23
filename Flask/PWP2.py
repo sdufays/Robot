@@ -52,7 +52,7 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
 	# and occupied/unoccupied text
     image = frame.array
     rawCapture.truncate()
-        break
+    rawCapture.seek(0)
 
 @app.route('/video_feed')
 def video_feed():
