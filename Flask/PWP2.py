@@ -49,17 +49,17 @@ rawCapture = PiRGBArray(camera, size=(320, 240))
 @app.route('/video_feed')
 def video_feed():
     for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
-	# grab the raw NumPy array representing the image, then initialize the timestamp
-	# and occupied/unoccupied text
-	image = frame.array
-	# show the frame
-	cv2.imshow("Frame", image)
-	key = cv2.waitKey(1) & 0xFF
-	# clear the stream in preparation for the next frame
-	rawCapture.truncate(0)
-	# if the `q` key was pressed, break from the loop
-	if key == ord("q"):
-		break
+        # grab the raw NumPy array representing the image, then initialize the timestamp
+        # and occupied/unoccupied text
+        image = frame.array
+        # show the frame
+        cv2.imshow("Frame", image)
+        key = cv2.waitKey(1) & 0xFF
+        # clear the stream in preparation for the next frame
+        rawCapture.truncate(0)
+        # if the `q` key was pressed, break from the loop
+        if key == ord("q"):
+            break
 
 # move the robot fwd
 @app.route('/fwd', methods=['GET'])
