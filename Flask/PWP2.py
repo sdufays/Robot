@@ -8,36 +8,10 @@ import logging
 import datetime
 import os
 
-
-app = Flask(__name__)
-from camera_pi import Camera
-rc = robot()
+app=Flask(__name__)
 
 if os.path.exists("loggingfile.txt"):
   os.remove("loggingfile.txt")
-
-with open("loggingfile.txt", "w+") as loggingfile:
-    logFormatter = logging.Formatter("%(asctime)s [%(levelname)-5.5s] %(message)s")
-    rootLogger = logging.getLogger()
-    fileHandler = logging.FileHandler("loggingfile.txt")
-    fileHandler.setFormatter(logFormatter)
-    consoleHandler = logging.StreamHandler()
-    rootLogger.addHandler(consoleHandler)
-    rootLogger.addHandler(fileHandler)
-
-#fwd 3, right 0.75, fwd 1.75, rev 0.8, right 0.75, fwd 3.05
-
-
-@app.route('/log_stream')
-def log_stream():
-    with open("loggingfile.txt", "r") as loggingfile:
-        return "".join(loggingfile.readlines()[-25:])
-
-@app.route('/')
-def index():
-    """Video streaming home page."""
-    return render_template('home.html')
- 
 def gen(camera):
     """Video streaming generator function."""
     while True:
@@ -55,25 +29,25 @@ def video_feed():
 @app.route('/fwd', methods=['GET'])
 def fwd():
     rc.forward(0.1, 30)
-    return ""
+    return True
 
 # move the robot rev
 @app.route('/rev', methods=['GET'])
 def rev():
     rc.reverse(0.1, 30)
-    return ""
+    return True
 
 # move the robot left
 @app.route('/left', methods=['GET'])
 def left():
     rc.left(0.05)
-    return ""
+    return True
 
 # move the robot right
 @app.route('/right', methods=['GET'])
 def right():
     rc.right(0.05)
-    return ""
+    return True
 
 # run the predetermined course
 @app.route('/run')
