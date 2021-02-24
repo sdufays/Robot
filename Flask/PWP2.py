@@ -8,8 +8,6 @@ import logging
 import datetime
 import os
 
-if os.path.exists("loggingfile.txt"):
-  os.remove("loggingfile.txt")
 
 app = Flask(__name__)
 from camera_pi import Camera
@@ -25,6 +23,9 @@ with open("loggingfile.txt", "w+") as loggingfile:
     rootLogger.addHandler(fileHandler)
 
 #fwd 3, right 0.75, fwd 1.75, rev 0.8, right 0.75, fwd 3.05
+
+if os.path.exists("loggingfile.txt"):
+  os.remove("loggingfile.txt")
 
 @app.route('/log_stream')
 def log_stream():
