@@ -12,6 +12,11 @@ import numpy as np
 from picamera.array import PiRGBArray
 from picamera import PiCamera
 
+camera = PiCamera()
+camera.resolution = (320, 240)
+camera.framerate = 30
+rawCapture = PiRGBArray(camera, size=(320, 240))
+
 if os.path.exists("loggingfile.txt"):
   os.remove("loggingfile.txt")
 
@@ -40,11 +45,6 @@ def log_stream():
 def index():
     """Video streaming home page."""
     return render_template('home.html')
-
-camera = PiCamera()
-camera.resolution = (320, 240)
-camera.framerate = 30
-rawCapture = PiRGBArray(camera, size=(320, 240))
 
 @app.route('/video_feed')
 def video_feed():
