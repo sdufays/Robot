@@ -7,59 +7,38 @@ import io
 import logging
 import datetime
 import os
-import cv2
-import numpy as np
-from picamera.array import PiRGBArray
-from picamera import PiCamera
-
-camera = PiCamera()
-camera.resolution = (320, 240)
-camera.framerate = 30
-rawCapture = PiRGBArray(camera, size=(320, 240))
+# import cv2
+# import numpy as np
 
 if os.path.exists("loggingfile.txt"):
   os.remove("loggingfile.txt")
-
-app = Flask(__name__)
-from camera_pi import Camera
-rc = robot()
-
-with open("loggingfile.txt", "w+") as loggingfile:
-    logFormatter = logging.Formatter("%(asctime)s [%(levelname)-5.5s] %(message)s")
-    rootLogger = logging.getLogger()
-    fileHandler = logging.FileHandler("loggingfile.txt")
-    fileHandler.setFormatter(logFormatter)
-    consoleHandler = logging.StreamHandler()
-    rootLogger.addHandler(consoleHandler)
-    rootLogger.addHandler(fileHandler)
-
-#fwd 3, right 0.75, fwd 1.75, rev 0.8, right 0.75, fwd 3.05
-# cap = cv2.VideoCapture(0)
-
-@app.route('/log_stream')
-def log_stream():
-    with open("loggingfile.txt", "r") as loggingfile:
-        return "".join(loggingfile.readlines()[-25:])
-
-@app.route('/')
-def index():
-    """Video streaming home page."""
-    return render_template('home.html')
+def gen(camera):
+    """Video streaming generator function."""
+    while True:
+        # cap.release()
+        # cv2.destroyAllWindows() 
+        frame = camera.get_frame()
+        yield (b'--frame\r\n'
+               b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
 
 @app.route('/video_feed')
 def video_feed():
-    for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
-        # grab the raw NumPy array representing the image, then initialize the timestamp
-        # and occupied/unoccupied text
-        image = frame.array
-        # show the frame
-        cv2.imshow("Frame", image)
-        key = cv2.waitKey(1) & 0xFF
-        # clear the stream in preparation for the next frame
-        rawCapture.truncate(0)
-        # if the `q` key was pressed, break from the loop
-        if key == ord("q"):
-            break
+    """Video streaming route. Put this in the src attribute of an img tag."""
+    return Response(gen(Camera()),
+                    mimetype='multipart/x-mixed-replace; boundary=frame')
+
+# @app.route('/video_feed')
+# def video_feed():
+#     cap = cv2.VideoCapture(0)
+#     while(True):
+#         # Capture frame-by-frame
+#         ret, frame = cap.read()
+#         # Our operations on the frame come here
+#         gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+#         # Display the resulting frame
+#         cv2.imshow('frame',gray)
+#         if cv2.waitKey(1) & 0xFF == ord('q'):
+#             break
 
 # move the robot fwd
 @app.route('/fwd', methods=['GET'])
