@@ -9,9 +9,34 @@ import datetime
 import os
 
 app=Flask(__name__)
+from camera_pi import Camera
+rc = robot()
 
+# LOGGING STUFF
 if os.path.exists("loggingfile.txt"):
   os.remove("loggingfile.txt")
+
+with open("loggingfile.txt", "w+") as loggingfile:
+    logFormatter = logging.Formatter("%(asctime)s [%(levelname)-5.5s] %(message)s")
+    rootLogger = logging.getLogger()
+    fileHandler = logging.FileHandler("loggingfile.txt")
+    fileHandler.setFormatter(logFormatter)
+    consoleHandler = logging.StreamHandler()
+    rootLogger.addHandler(consoleHandler)
+    rootLogger.addHandler(fileHandler)
+
+@app.route('/log_stream')
+def log_stream():
+    with open("loggingfile.txt", "r") as loggingfile:
+        return "".join(loggingfile.readlines()[-25:])
+
+#HOME HTML TEMPLATE
+@app.route('/')
+def index():
+    """Video streaming home page."""
+    return render_template('home.html')
+
+#CAMERA FUNCTIONS
 def gen(camera):
     """Video streaming generator function."""
     while True:
