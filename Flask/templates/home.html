@@ -12,7 +12,7 @@
     xhttp.send();
     var output = document.getElementById('output');
           var xhr = new XMLHttpRequest();
-          xhr.open('GET', '{{ url_for('log_stream') }}', true);
+          xhr.open('GET', '{{ url_for('video_feed') }}', true);
           xhr.send();
           xhr.onload = function () {
             output.textContent = xhr.responseText;
