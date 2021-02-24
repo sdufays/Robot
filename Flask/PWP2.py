@@ -9,6 +9,7 @@ import datetime
 import os
 # import cv2
 # import numpy as np
+app=Flask(__name__)
 
 if os.path.exists("loggingfile.txt"):
   os.remove("loggingfile.txt")
