@@ -34,8 +34,6 @@ def log_stream():
 @app.route('/')
 def index():
     """Video streaming home page."""
-    if os.path.exists("loggingfile.txt"):
-        os.remove("loggingfile.txt")
     return render_template('home.html')
 
 #CAMERA FUNCTIONS
