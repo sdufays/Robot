@@ -7,6 +7,8 @@ import io
 import logging
 import datetime
 import os
+import picamera
+import numpy as np
 
 app=Flask(__name__)
 from camera_pi import Camera
@@ -29,6 +31,13 @@ with open("loggingfile.txt", "w+") as loggingfile:
 def log_stream():
     with open("loggingfile.txt", "r") as loggingfile:
         return "".join(loggingfile.readlines()[-25:])
+
+with picamera.PiCamera() as camera1:
+    camera1.resolution = (320, 240)
+    camera1.framerate = 24
+    time.sleep(2)
+    output = np.empty((240, 320, 3), dtype=np.uint8)
+    camera1.capture(output, 'rgb')
 
 #HOME HTML TEMPLATE
 @app.route('/')
