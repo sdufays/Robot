@@ -33,15 +33,15 @@ def generate():
     global outputFrame
     while True:
         if outputFrame is None:
-                    continue
-                # encode the frame in JPEG format
-                (flag, encodedImage) = cv2.imencode(".jpg", outputFrame)
-                # ensure the frame was successfully encoded
-                if not flag:
-                    continue
-            # yield the output frame in the byte format
-            yield(b'--frame\r\n' b'Content-Type: image/jpeg\r\n\r\n' + 
-                bytearray(encodedImage) + b'\r\n')
+            continue
+            # encode the frame in JPEG format
+        (flag, encodedImage) = cv2.imencode(".jpg", outputFrame)
+        # ensure the frame was successfully encoded
+        if not flag:
+            continue
+        # yield the output frame in the byte format
+        yield(b'--frame\r\n' b'Content-Type: image/jpeg\r\n\r\n' + 
+            bytearray(encodedImage) + b'\r\n')
 
 @app.route("/video_feed")
 def video_feed():
