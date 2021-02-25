@@ -7,7 +7,6 @@ import io
 import logging
 import datetime
 import os
-from imutils.video import VideoStream
 
 app=Flask(__name__)
 from camera_pi import Camera
@@ -25,31 +24,6 @@ with open("loggingfile.txt", "w+") as loggingfile:
     consoleHandler = logging.StreamHandler()
     rootLogger.addHandler(consoleHandler)
     rootLogger.addHandler(fileHandler)
-
-outputFrame = None
-vs = VideoStream(usePiCamera=1).start()
-time.sleep(2.0)
-
-def generate():
-    global outputFrame
-    while True:
-        if outputFrame is None:
-            continue
-            # encode the frame in JPEG format
-        (flag, encodedImage) = cv2.imencode(".jpg", outputFrame)
-        # ensure the frame was successfully encoded
-        if not flag:
-            continue
-        # yield the output frame in the byte format
-        yield(b'--frame\r\n' b'Content-Type: image/jpeg\r\n\r\n' + 
-            bytearray(encodedImage) + b'\r\n')
-
-@app.route("/video_feed")
-def video_feed():
-	# return the response generated along with the specific media
-	# type (mime type)
-	return Response(generate(),
-		mimetype = "multipart/x-mixed-replace; boundary=frame")
 
 @app.route('/log_stream')
 def log_stream():
@@ -70,11 +44,11 @@ def gen(camera):
         yield (b'--frame\r\n'
                b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
 
-# @app.route('/video_feed')
-# def video_feed():
-#     """Video streaming route. Put this in the src attribute of an img tag."""
-#     return Response(gen(Camera()),
-#                     mimetype='multipart/x-mixed-replace; boundary=frame')
+@app.route('/video_feed')
+def video_feed():
+    """Video streaming route. Put this in the src attribute of an img tag."""
+    return Response(gen(Camera()),
+                    mimetype='multipart/x-mixed-replace; boundary=frame')
 
 # move the robot fwd
 @app.route('/fwd', methods=['GET'])
