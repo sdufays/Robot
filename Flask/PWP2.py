@@ -8,6 +8,7 @@ import logging
 import datetime
 import os
 from imutils.video import VideoStream
+import threading
 
 app=Flask(__name__)
 from camera_pi import Camera
@@ -29,17 +30,19 @@ with open("loggingfile.txt", "w+") as loggingfile:
 outputFrame = None
 vs = VideoStream(usePiCamera=1).start()
 time.sleep(2.0)
+lock = threading.Lock()
 
 def generate():
-    global outputFrame
+    global outputFrame, lock
     while True:
-        if outputFrame is None:
-            continue
-            # encode the frame in JPEG format
-        (flag, encodedImage) = cv2.imencode(".jpg", outputFrame)
-        # ensure the frame was successfully encoded
-        if not flag:
-            continue
+        with lock:
+            if outputFrame is None:
+                continue
+                # encode the frame in JPEG format
+            (flag, encodedImage) = cv2.imencode(".jpg", outputFrame)
+            # ensure the frame was successfully encoded
+            if not flag:
+                continue
         # yield the output frame in the byte format
         yield(b'--frame\r\n' b'Content-Type: image/jpeg\r\n\r\n' + 
             bytearray(encodedImage) + b'\r\n')
