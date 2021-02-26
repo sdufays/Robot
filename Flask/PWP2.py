@@ -64,8 +64,8 @@ def gen(camera):
     while True:
         frame = camera.get_frame()
         npframe = np.fromstring(frame, dtype=np.uint8)
-        pil_frame = cv2.imdecode(npframe,cv2.IMREAD_COLOR)
-        #pil_frame = cv2.imdecode(frame,-1)
+        # pil_frame = cv2.imdecode(npframe,cv2.IMREAD_COLOR)
+        pil_frame = cv2.imdecode(frame,-1)
         cv2_im_rgb = cv2.cvtColor(pil_frame, cv2.COLOR_BGR2RGB)
         pil_im = Image.fromarray(cv2_im_rgb)
         yield (b'--frame\r\n'
