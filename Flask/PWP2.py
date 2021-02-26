@@ -50,7 +50,7 @@ def log_stream():
 #         break
 
 # When everything done, release the capture
-cap.release()
+# cap.release()
 
 #HOME HTML TEMPLATE
 @app.route('/')
