@@ -69,7 +69,7 @@ def gen(camera):
         cv2_im_rgb = cv2.cvtColor(pil_frame, cv2.COLOR_BGR2RGB)
         pil_im = Image.fromarray(cv2_im_rgb)
         yield (b'--frame\r\n'
-               b'Content-Type: image/jpeg\r\n\r\n' + cv2_im_rgb + b'\r\n')
+               b'Content-Type: image/jpeg\r\n\r\n' + pil_im + b'\r\n')
 
 @app.route('/video_feed')
 def video_feed():
