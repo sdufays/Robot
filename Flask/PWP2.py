@@ -38,16 +38,16 @@ def log_stream():
     with open("loggingfile.txt", "r") as loggingfile:
         return "".join(loggingfile.readlines()[-25:])
 
-while(cap.isOpened()):
-    ret, frame = cap.read()
-    #np_frame = cv2.imread('video', frame) # does not work
-    #np_frame = np.asarray(cv2.GetMat(frame)) # does not work
-    #print(np_frame.shape)
-    print(frame.shape)
+# while(cap.isOpened()):
+#     ret, frame = cap.read()
+#     #np_frame = cv2.imread('video', frame) # does not work
+#     #np_frame = np.asarray(cv2.GetMat(frame)) # does not work
+#     #print(np_frame.shape)
+#     print(frame.shape)
 
-    cv2.imshow('frame',frame)
-    if cv2.waitKey(1) & 0xFF == ord('q'):
-        break
+#     cv2.imshow('frame',frame)
+#     if cv2.waitKey(1) & 0xFF == ord('q'):
+#         break
 
 # When everything done, release the capture
 cap.release()
