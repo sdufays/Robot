@@ -7,7 +7,7 @@ import io
 import logging
 import datetime
 import os
-import picamera
+import picamera.array
 import numpy as np
 import cv2
 
