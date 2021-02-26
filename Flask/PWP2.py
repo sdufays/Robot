@@ -12,9 +12,9 @@ import numpy as np
 import cv2
 
 
-cap = cv2.VideoCapture('rain.avi')
-cv2.namedWindow('frame',cv2.WINDOW_NORMAL)
-cv2.resizeWindow('frame', 800,800)
+# cap = cv2.VideoCapture('rain.avi')
+# cv2.namedWindow('frame',cv2.WINDOW_NORMAL)
+# cv2.resizeWindow('frame', 800,800)
 
 app=Flask(__name__)
 from camera_pi import Camera
