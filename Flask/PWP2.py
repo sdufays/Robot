@@ -61,6 +61,7 @@ def index():
 #CAMERA FUNCTIONS
 def gen(camera):
     """Video streaming generator function."""
+    # @TODO FIX THIS BS
     while True:
         frame = camera.get_frame()
         npframe = np.fromstring(frame, dtype=np.uint8)
