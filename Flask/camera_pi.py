@@ -47,40 +47,40 @@ class Camera(object):
                 stream.seek(0)
                 
 
-                background = cv2.imread(frame)
-                height, width, _ = background.shape
-                overlay = background.copy()
-                radius = 80
+                # background = cv2.imread(frame)
+                # height, width, _ = background.shape
+                # overlay = background.copy()
+                # radius = 80
 
-                cv2.circle(overlay,
-                                (width-radius,height-radius),
-                                radius,
-                                (0, 255, 255),
-                                -1,
-                                8)
-                cv2.arrowedLine(overlay,
-                                (width-radius,height-radius),
-                                (width-radius,height-2*radius),
-                                (0,0,255),
-                                8)
+                # cv2.circle(overlay,
+                #                 (width-radius,height-radius),
+                #                 radius,
+                #                 (0, 255, 255),
+                #                 -1,
+                #                 8)
+                # cv2.arrowedLine(overlay,
+                #                 (width-radius,height-radius),
+                #                 (width-radius,height-2*radius),
+                #                 (0,0,255),
+                #                 8)
 
-                cv2.circle(overlay,
-                                (radius,height-radius),
-                                radius,
-                                (0, 255, 255),
-                                -1,
-                                8)
+                # cv2.circle(overlay,
+                #                 (radius,height-radius),
+                #                 radius,
+                #                 (0, 255, 255),
+                #                 -1,
+                #                 8)
                 
-                cv2.arrowedLine(overlay,
-                                (radius,height-radius),
-                                (radius,height-2*radius),
-                                (0,0,255),
-                                8)
+                # cv2.arrowedLine(overlay,
+                #                 (radius,height-radius),
+                #                 (radius,height-2*radius),
+                #                 (0,0,255),
+                #                 8)
                     
 
-                added_image = cv2.addWeighted(background,1,overlay,0.5,0)
+                # added_image = cv2.addWeighted(background,1,overlay,0.5,0)
 
-                cv2.imwrite('combined.jpg', added_image)
+                # cv2.imwrite('combined.jpg', added_image)
 
 
                 cls.frame = stream.read()
