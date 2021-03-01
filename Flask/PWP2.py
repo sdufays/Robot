@@ -61,14 +61,8 @@ def index():
 #CAMERA FUNCTIONS
 def gen(camera):
     """Video streaming generator function."""
-    # @TODO FIX THIS BS
     while True:
         frame = camera.get_frame()
-        # npframe = np.fromstring(frame, dtype=np.uint8)
-        # # pil_frame = cv2.imdecode(npframe,cv2.IMREAD_COLOR)
-        # pil_frame = cv2.imdecode(frame,-1)
-        # cv2_im_rgb = cv2.cvtColor(pil_frame, cv2.COLOR_BGR2RGB)
-        # pil_im = Image.fromarray(cv2_im_rgb)
         yield (b'--frame\r\n'
                b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n\r\n')
 
