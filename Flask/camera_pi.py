@@ -45,10 +45,9 @@ class Camera(object):
                                                  use_video_port=True):
                 # store frame
                 stream.seek(0)
-                backgroundframe = stream.read()
                 
 
-                background = cv2.imread(backgroundframe)
+                background = cv2.imread('image.jpg')
                 height, width, _ = background.shape
                 overlay = background.copy()
                 radius = 80
@@ -84,7 +83,7 @@ class Camera(object):
                 cv2.imwrite('combined.jpg', added_image)
 
 
-                cls.frame = combined.jpg
+                cls.frame = stream.read()
 
                 # reset stream for next frame
                 stream.seek(0)
