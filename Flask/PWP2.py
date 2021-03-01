@@ -10,6 +10,7 @@ import os
 import picamera.array
 import numpy as np
 import cv2
+from PIL import Image as Image
 
 
 # cap = cv2.VideoCapture('rain.avi')
