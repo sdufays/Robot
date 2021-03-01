@@ -8,7 +8,6 @@ import logging
 import datetime
 import os
 import picamera.array
-import numpy as np
 import cv2
 
 
