@@ -42,7 +42,7 @@ class Camera(object):
                 # store frame
                 stream.seek(0)
                 
-                background = cv2.imread(frame)
+                background = cv2.imread(get_frame)
                 height, width, _ = background.shape
                 overlay = background.copy()
                 radius = 80
