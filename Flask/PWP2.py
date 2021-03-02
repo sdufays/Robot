@@ -12,11 +12,6 @@ import cv2
 from PIL import Image
 from numpy import asarray
 
-
-# cap = cv2.VideoCapture('rain.avi')
-# cv2.namedWindow('frame',cv2.WINDOW_NORMAL)
-# cv2.resizeWindow('frame', 800,800)
-
 app=Flask(__name__)
 from camera_pi import Camera
 rc = robot()
@@ -39,20 +34,6 @@ def log_stream():
     with open("loggingfile.txt", "r") as loggingfile:
         return "".join(loggingfile.readlines()[-25:])
 
-# while(cap.isOpened()):
-#     ret, frame = cap.read()
-#     #np_frame = cv2.imread('video', frame) # does not work
-#     #np_frame = np.asarray(cv2.GetMat(frame)) # does not work
-#     #print(np_frame.shape)
-#     print(frame.shape)
-
-#     cv2.imshow('frame',frame)
-#     if cv2.waitKey(1) & 0xFF == ord('q'):
-#         break
-
-# When everything done, release the capture
-# cap.release()
-
 #HOME HTML TEMPLATE
 @app.route('/')
 def index():
@@ -64,39 +45,6 @@ def gen(camera):
     """Video streaming generator function."""
     while True:
         frame = camera.get_frame()
-        # # arrform=asarray(frame)
-        # background = cv2.imread(frame)
-        # height, width, _ = background.shape
-        # overlay = background.copy()
-        # radius = 80
-        # cv2.circle(overlay,
-        #                 (width-radius,height-radius),
-        #                 radius,
-        #                 (0, 255, 255),
-        #                 -1,
-        #                 8)
-        # cv2.arrowedLine(overlay,
-        #                 (width-radius,height-radius),
-        #                 (width-radius,height-2*radius),
-        #                 (0,0,255),
-        #                 8)
-
-        # cv2.circle(overlay,
-        #                 (radius,height-radius),
-        #                 radius,
-        #                 (0, 255, 255),
-        #                 -1,
-        #                 8)
-        
-        # cv2.arrowedLine(overlay,
-        #                 (radius,height-radius),
-        #                 (radius,height-2*radius),
-        #                 (0,0,255),
-        #                 8)
-        # added_image = cv2.addWeighted(background,1,overlay,0.5,0)
-
-        # cv2.imwrite('combined.jpg', added_image)
-        # # cls.frame = stream.read()
         yield (b'--frame\r\n'
                b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n\r\n')
 
