@@ -81,8 +81,6 @@ class Camera(object):
             # added_image = cv2.addWeighted(background,1,overlay,0.5,0)
 
             # cv2.imwrite('combined.jpg', added_image)
-
-
             cls.frame = stream.read()
 
             # reset stream for next frame
@@ -91,8 +89,8 @@ class Camera(object):
 
             # if there hasn't been any clients asking for frames in
             # the last 10 seconds stop the thread
-            # if time.time() - cls.last_access > 10:
-            #     break
+            if time.time() - cls.last_access > 10:
+                break
     cls.thread = None
 
 
