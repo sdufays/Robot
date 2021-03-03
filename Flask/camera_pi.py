@@ -3,6 +3,7 @@ import io
 import threading
 import picamera
 import cv2
+import numpy as np
 
 class Camera(object):
     thread = None  # background thread that reads frames from camera
