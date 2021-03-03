@@ -45,8 +45,43 @@ def gen(camera):
     """Video streaming generator function."""
     while True:
         frame = camera.get_frame()
+        frame = cv2.imread(frame)
+        height, width, _ = frame.shape
+        overlay = frame.copy()
+        radius = 80
+
+        cv2.circle(overlay,
+                        (width-radius,height-radius),
+                        radius,
+                        (0, 255, 255),
+                        -1,
+                        8)
+        cv2.arrowedLine(overlay,
+                        (width-radius,height-radius),
+                        (width-radius,height-2*radius),
+                        (0,0,255),
+                        8)
+
+        cv2.circle(overlay,
+                        (radius,height-radius),
+                        radius,
+                        (0, 255, 255),
+                        -1,
+                        8)
+        
+        cv2.arrowedLine(overlay,
+                        (radius,height-radius),
+                        (radius,height-2*radius),
+                        (0,0,255),
+                        8)
+            
+
+        added_image = cv2.addWeighted(background,1,overlay,0.5,0)
+
+        cv2.imwrite('combined.jpg', added_image)
+
         yield (b'--frame\r\n'
-               b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n\r\n')
+               b'Content-Type: image/jpeg\r\n\r\n' + 'combined.jpg' + b'\r\n\r\n')
 
 @app.route('/video_feed')
 def video_feed():
