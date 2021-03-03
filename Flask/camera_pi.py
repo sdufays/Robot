@@ -40,36 +40,38 @@ class Camera(object):
             for foo in camera.capture_continuous(stream, 'jpeg',
                                                  use_video_port=True):
                 # store frame
-                stream.seek(0)
-                cls.frame = stream.read()
+                data = np.fromstring(stream.getvalue(), dtype=np.uint8)
+                image = cv2.imdecode(data, 1)
+                # stream.seek(0)
+                # cls.frame = stream.read()
 
-                background = cv2.imencode('.jpg', cls.frame)
+                # background = cv2.imencode('.jpg', cls.frame)
                 
                 # background = cv2.imread('image.jpg')
-                height, width, _ = background.shape
+                height, width, _ = image.shape
                 # overlay = background.copy()
                 radius = 80
 
-                cv2.circle(background,
+                cv2.circle(image,
                                 (width-radius,height-radius),
                                 radius,
                                 (0, 255, 255),
                                 -1,
                                 8)
-                cv2.arrowedLine(background,
+                cv2.arrowedLine(image,
                                 (width-radius,height-radius),
                                 (width-radius,height-2*radius),
                                 (0,0,255),
                                 8)
 
-                cv2.circle(background,
+                cv2.circle(image,
                                 (radius,height-radius),
                                 radius,
                                 (0, 255, 255),
                                 -1,
                                 8)
                 
-                cv2.arrowedLine(background,
+                cv2.arrowedLine(image,
                                 (radius,height-radius),
                                 (radius,height-2*radius),
                                 (0,0,255),
@@ -79,7 +81,7 @@ class Camera(object):
                 # added_image = cv2.addWeighted(background,1,overlay,0.5,0)
 
                 #cv2.imwrite('combined.jpg', background)
-                cls.frame = background.tobytes()
+                cls.frame = image.tobytes()
 
                 # reset stream for next frame
                 stream.seek(0)
