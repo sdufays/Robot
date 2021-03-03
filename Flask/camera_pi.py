@@ -42,7 +42,6 @@ class Camera(object):
                 # store frame
                 data = np.fromstring(stream.getvalue(), dtype=np.uint8)
                 image = cv2.imdecode(data, 1)
-                stream.seek(0)
                 # cls.frame = stream.read()
 
                 # background = cv2.imencode('.jpg', cls.frame)
