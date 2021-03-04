@@ -81,7 +81,7 @@ class Camera(object):
                 # added_image = cv2.addWeighted(background,1,overlay,0.5,0)
 
                 #cv2.imwrite('combined.jpg', background)
-                # cls.frame = image.tobytes()
+                cls.frame = image.tobytes()
                 cls.frame = cv2.imencode(".jpg", cls.frame)
 
                 # reset stream for next frame
