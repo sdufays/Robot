@@ -7,7 +7,7 @@ class VideoCamera(object):
     def __del__(self):
         self.video.release()
     
-    def get_frame(self, chance1, chance2):
+    def get_frame(self, x1, x2):
         success, image = self.video.read()
         image = cv2.flip(image, 0)
         image = cv2.flip(image, 1)
@@ -21,27 +21,27 @@ class VideoCamera(object):
                         radius,
                         (0, 255, 255),
                         -1,
-                        8) #right circle
+                        8)
 
-        if chance1 == 1: #forward
+        if x1 == 1: 
             cv2.arrowedLine(overlay,
                 (width-radius,height-radius),
                 (width-radius,height-2*radius),
                 (0,0,255),
                 8)
-        if chance1 == 2: #left
+        if x1 == 2:
             cv2.arrowedLine(overlay,
                 (width-radius,height-radius),
                 (width-2*radius,height-radius),
                 (0,0,255),
                 8)
-        if chance1 == 3: #backwards
+        if x1 == 3: #backwards
             cv2.arrowedLine(overlay,
                 (width-radius,height-radius),
                 (width-radius,height),
                 (0,0,255),
                 8)
-        if chance1 == 4: #this is right
+        if x1 == 4: #this is right
             cv2.arrowedLine(overlay,
                 (width-radius,height-radius),
                 (width,height-radius),
@@ -55,25 +55,25 @@ class VideoCamera(object):
                         -1,
                         8) #left circle
 
-        if chance2 == 1: #forward
+        if x2 == 1: #forward
             cv2.arrowedLine(overlay,
                             (radius,height-radius),
                             (radius,height-2*radius),
                             (0,0,255),
                             8)
-        if chance2 == 2: #left
+        if x2 == 2: 
             cv2.arrowedLine(overlay,
                 (radius,height-radius),
                 (0,height-radius),
                 (0,0,255),
                 8)
-        if chance2 == 3: #backward
+        if x2 == 3: 
             cv2.arrowedLine(overlay,
                 (radius,height-radius),
                 (radius,height),
                 (0,0,255),
                 8)
-        if chance2 == 4: #tright
+        if x2 == 4: 
             cv2.arrowedLine(overlay,
                 (radius,height-radius),
                 (2*radius,height-radius),
