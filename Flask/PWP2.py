@@ -9,8 +9,6 @@ import datetime
 import os
 import picamera.array
 import cv2
-from PIL import Image
-from numpy import asarray
 import socketserver
 from threading import Condition
 from http import server
@@ -18,14 +16,17 @@ import sys
 import io
 import picamera
 import logging
+
+# call camera_pi file
 from camera_pi import VideoCamera
 
 
 app=Flask(__name__)
 rc = robot()
 
-list = [0,0]
+arrows = [0,0]
 
+# logging stuff
 with open("loggingfile.txt", "w+") as loggingfile:
    logFormatter = logging.Formatter("%(asctime)s [%(levelname)-5.5s] %(message)s")
    rootLogger = logging.getLogger()
@@ -51,8 +52,8 @@ def index():
 
 def gen(camera):
     while True:
-        comp1 = list[-1]
-        comp2 = list[-2]
+        comp1 = arrows[-1]
+        comp2 = arrows[-2]
         frame = camera.get_frame(comp1, comp2)
         yield (b'--frame\r\n'
                b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n\r\n')
@@ -65,28 +66,28 @@ def video_feed():
 # move the robot fwd
 @app.route('/fwd', methods=['GET'])
 def fwd():
-   list.append(1)
+   arrows.append(1)
    rc.forward(0.1, 30)
    return "JUST WORK OK"
 
 # move the robot rev
 @app.route('/rev', methods=['GET'])
 def rev():
-   list.append(3)
+   arrows.append(3)
    rc.reverse(0.1, 30)
    return "JUST WORK OK"
 
 # move the robot left
 @app.route('/left', methods=['GET'])
 def left():
-    list.append(2)
+    arrows.append(2)
     rc.left(0.05)
     return "JUST WORK OK"
 
 # move the robot right
 @app.route('/right', methods=['GET'])
 def right():
-   list.append(4)
+   arrows.append(4)
    rc.right(0.05)
    return "JUST WORK OK"
 
