@@ -11,10 +11,21 @@ import picamera.array
 import cv2
 from PIL import Image
 from numpy import asarray
+import socketserver
+from threading import Condition
+from http import server
+import sys
+import io
+import picamera
+import logging
+
+
 
 app=Flask(__name__)
 from camera_pi import Camera
 rc = robot()
+
+list = [0,0]
 
 # LOGGING STUFF
 if os.path.exists("loggingfile.txt"):
