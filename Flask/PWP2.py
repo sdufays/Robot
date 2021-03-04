@@ -16,15 +16,14 @@ import sys
 import io
 import picamera
 import logging
-
 # call camera_pi file
 from camera_pi import VideoCamera
 
 
 app=Flask(__name__)
 rc = robot()
-
 arrows = [0,0]
+# a=1
 
 # logging stuff
 with open("loggingfile.txt", "w+") as loggingfile:
@@ -41,9 +40,6 @@ def log_stream():
     with open("loggingfile.txt", "r") as loggingfile:
         return "".join(loggingfile.readlines()[-25:])
 
-
-a=1
-
 #HOME HTML TEMPLATE
 @app.route('/')
 def index():
@@ -52,9 +48,9 @@ def index():
 
 def gen(camera):
     while True:
-        comp1 = arrows[-1]
-        comp2 = arrows[-2]
-        frame = camera.get_frame(comp1, comp2)
+        left = arrows[-1]
+        right = arrows[-2]
+        frame = camera.get_frame(left, right)
         yield (b'--frame\r\n'
                b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n\r\n')
 
