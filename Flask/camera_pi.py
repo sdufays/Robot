@@ -19,7 +19,7 @@ class VideoCamera(object):
         cv2.circle(overlay,
                         (width-radius,height-radius),
                         radius,
-                        (0, 255, 255),
+                        (74, 204, 224),
                         -1,
                         8)
 
@@ -27,31 +27,31 @@ class VideoCamera(object):
             cv2.arrowedLine(overlay,
                 (width-radius,height-radius),
                 (width-radius,height-2*radius),
-                (0,0,255),
+                (255, 74, 219),
                 8)
         if x1 == 2:
             cv2.arrowedLine(overlay,
                 (width-radius,height-radius),
                 (width-2*radius,height-radius),
-                (0,0,255),
+                (255, 74, 219),
                 8)
         if x1 == 3: #backwards
             cv2.arrowedLine(overlay,
                 (width-radius,height-radius),
                 (width-radius,height),
-                (0,0,255),
+                (255, 74, 219),
                 8)
         if x1 == 4: #this is right
             cv2.arrowedLine(overlay,
                 (width-radius,height-radius),
                 (width,height-radius),
-                (0,0,255),
+                (0255, 74, 219),
                 8)
         
         cv2.circle(overlay,
                         (radius,height-radius),
                         radius,
-                        (0, 255, 255),
+                        (74, 204, 224),
                         -1,
                         8) #left circle
 
