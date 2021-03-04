@@ -67,15 +67,15 @@ def video_feed():
 @app.route('/fwd', methods=['GET'])
 def fwd():
    list.append(1)
-    rc.forward(0.1, 30)
-    return "JUST WORK OK"
+   rc.forward(0.1, 30)
+   return "JUST WORK OK"
 
 # move the robot rev
 @app.route('/rev', methods=['GET'])
 def rev():
    list.append(3)
-    rc.reverse(0.1, 30)
-    return "JUST WORK OK"
+   rc.reverse(0.1, 30)
+   return "JUST WORK OK"
 
 # move the robot left
 @app.route('/left', methods=['GET'])
@@ -88,8 +88,8 @@ def left():
 @app.route('/right', methods=['GET'])
 def right():
    list.append(4)
-    rc.right(0.05)
-    return "JUST WORK OK"
+   rc.right(0.05)
+   return "JUST WORK OK"
 
 # run the predetermined course
 @app.route('/run')
