@@ -45,7 +45,7 @@ class VideoCamera(object):
             cv2.arrowedLine(overlay,
                 (width-radius,height-radius),
                 (width,height-radius),
-                (0255, 74, 219),
+                (255, 74, 219),
                 8)
         
         cv2.circle(overlay,
