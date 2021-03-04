@@ -22,7 +22,6 @@ from camera_pi import VideoCamera
 
 
 app=Flask(__name__)
-from camera_pi import Camera
 rc = robot()
 
 list = [0,0]
