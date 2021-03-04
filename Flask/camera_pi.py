@@ -82,7 +82,7 @@ class Camera(object):
 
                 #cv2.imwrite('combined.jpg', background)
                 frame1 = image.tobytes()
-                ret, cls.frame = cv2.imencode(".jpg", frame1)
+                ret, cls.frame = cv2.imencode(".jpg", frame1, )
 
                 # reset stream for next frame
                 stream.seek(0)
