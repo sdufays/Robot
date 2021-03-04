@@ -1,95 +1,94 @@
-import time
-import io
-import threading
-import picamera
 import cv2
-import numpy as np
 
-class Camera(object):
-    thread = None  # background thread that reads frames from camera
-    frame = None  # current frame is stored here by background thread
-    last_access = 0  # time of last client access to the camera
+class VideoCamera(object):
+    def __init__(self):
+        # Using OpenCV to capture from device 0. If you have trouble capturing
+        # from a webcam, comment the line below out and use a video file
+        # instead.
+        self.video = cv2.VideoCapture(0)
+        # If you decide to use video.mp4, you must have this file in the folder
+        # as the main.py.
+        # self.video = cv2.VideoCapture('video.mp4')
+    
+    def __del__(self):
+        self.video.release()
+    
+    def get_frame(self, chance1, chance2):
+        success, image = self.video.read()
+        image = cv2.flip(image, 0)
+        image = cv2.flip(image, 1)
+        # We are using Motion JPEG, but OpenCV defaults to capture raw images,
+        # so we must encode it into JPEG in order to correctly display the
+        # video stream.
 
-    def initialize(self):
-        if Camera.thread is None:
-            # start background frame thread
-            Camera.thread = threading.Thread(target=self._thread)
-            Camera.thread.start()
+        background = image
+        height, width, _ = background.shape
+        overlay = background.copy()
+        radius = 80
+        cv2.circle(overlay,
+                        (width-radius,height-radius),
+                        radius,
+                        (0, 255, 255),
+                        -1,
+                        8) #this is right circle
 
-            # wait until frames start to be available
-            while self.frame is None:
-                time.sleep(0)
+        if chance1 == 1: #this is forward
+            cv2.arrowedLine(overlay,
+                (width-radius,height-radius),
+                (width-radius,height-2*radius),
+                (0,0,255),
+                8)
+        if chance1 == 2: #this is left
+            cv2.arrowedLine(overlay,
+                (width-radius,height-radius),
+                (width-2*radius,height-radius),
+                (0,0,255),
+                8)
+        if chance1 == 3: #this is backward
+            cv2.arrowedLine(overlay,
+                (width-radius,height-radius),
+                (width-radius,height),
+                (0,0,255),
+                8)
+        if chance1 == 4: #this is right
+            cv2.arrowedLine(overlay,
+                (width-radius,height-radius),
+                (width,height-radius),
+                (0,0,255),
+                8)
+        
+        cv2.circle(overlay,
+                        (radius,height-radius),
+                        radius,
+                        (0, 255, 255),
+                        -1,
+                        8) #this is left circle
 
-    def get_frame(self):
-        Camera.last_access = time.time()
-        self.initialize()
-        return self.frame
+        if chance2 == 1: #this is forward
+            cv2.arrowedLine(overlay,
+                            (radius,height-radius),
+                            (radius,height-2*radius),
+                            (0,0,255),
+                            8)
+        if chance2 == 2: #this is left
+            cv2.arrowedLine(overlay,
+                (radius,height-radius),
+                (0,height-radius),
+                (0,0,255),
+                8)
+        if chance2 == 3: #this is backward
+            cv2.arrowedLine(overlay,
+                (radius,height-radius),
+                (radius,height),
+                (0,0,255),
+                8)
+        if chance2 == 4: #this is right
+            cv2.arrowedLine(overlay,
+                (radius,height-radius),
+                (2*radius,height-radius),
+                (0,0,255),
+                8)
 
-    @classmethod
-    def _thread(cls):
-        with picamera.PiCamera() as camera:
-            # camera setup
-            camera.resolution = (320, 240)
-            camera.hflip = True
-            camera.vflip = True
-
-            # let camera warm up
-            camera.start_preview()
-            time.sleep(2)
-
-            stream = io.BytesIO()
-            for foo in camera.capture_continuous(stream, 'jpeg',
-                                                 use_video_port=True):
-                # store frame
-                data = np.fromstring(stream.getvalue(), dtype=np.uint8)
-                image = cv2.imdecode(data, 1)
-                # cls.frame = stream.read()
-
-                # background = cv2.imencode('.jpg', cls.frame)
-                
-                # background = cv2.imread('image.jpg')
-                height, width, _ = image.shape
-                # overlay = background.copy()
-                radius = 80
-
-                cv2.circle(image,
-                                (width-radius,height-radius),
-                                radius,
-                                (0, 255, 255),
-                                -1,
-                                8)
-                cv2.arrowedLine(image,
-                                (width-radius,height-radius),
-                                (width-radius,height-2*radius),
-                                (0,0,255),
-                                8)
-
-                cv2.circle(image,
-                                (radius,height-radius),
-                                radius,
-                                (0, 255, 255),
-                                -1,
-                                8)
-                
-                cv2.arrowedLine(image,
-                                (radius,height-radius),
-                                (radius,height-2*radius),
-                                (0,0,255),
-                                8)
-                    
-
-                # added_image = cv2.addWeighted(background,1,overlay,0.5,0)
-
-                #cv2.imwrite('combined.jpg', background)
-                cls.frame = image.tobytes()
-                cls.frame = cv2.imencode(".jpg", cls.frame)
-
-                # reset stream for next frame
-                stream.seek(0)
-                stream.truncate()
-
-                # if there hasn't been any clients asking for frames in
-                # the last 10 seconds stop the thread
-                if time.time() - cls.last_access > 10:
-                    break
-        cls.thread = None
+        added_image = cv2.addWeighted(background,1,overlay,0.5,0)
+        ret, jpeg = cv2.imencode('.jpg', added_image)
+        return jpeg.tobytes()
