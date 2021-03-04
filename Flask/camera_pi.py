@@ -80,7 +80,7 @@ class VideoCamera(object):
                 (0,0,255),
                 8)
 
-        added_image = cv2.addWeighted(background,1,overlay,0.5,0)
+        added_image = cv2.addWeighted(background,1,overlay,1,0)
         ret, jpeg = cv2.imencode('.jpg', added_image)
         return jpeg.tobytes()
 
