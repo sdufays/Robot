@@ -6,6 +6,7 @@
 </head>
 <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script>
+  // javascript to obtain the logging output and send it back to the log_stream
   function callButton(link, id) {
     var xhttp = new XMLHttpRequest();
     xhttp.open("GET", link, true);
@@ -20,6 +21,7 @@
   }
 </script>
 <style>
+     /* creates the quadrants for our webpage */
     html, body { height:100%; margin:0; padding:0 }
     div { position:fixed; border: 1px solid #000; border-color: black; width:50%; height:50% }
     #NW { top:0;   left:0   }
@@ -34,6 +36,7 @@
         top: 50%;
        }
 
+/* Creates the buttons and positions them   */
 .btn-group {
           flex: 0 0 32%;
           background-color: #d93ddb; 
@@ -90,6 +93,7 @@
       background-color: #1cd6eb;
     }
 
+/* Creates the logging window */
     .logging_window{
     display: block;
     padding: 9.5px;
@@ -106,12 +110,13 @@
     margin: auto;
     left: 50%;
     top: 0%;
-    /* scroll-snap-type: y mandatory; */
+    /* Figure this out: scroll-snap-type: y mandatory; */
     }
 
 
 </style>
 <body>
+    <!-- gets the stream from pwp and outputs it to the NW quadrant -->
     <div id="NW"></div>
       <img src="{{ url_for('video_feed') }}" width="50%" height="50%">
     <div id="NE"></div>
@@ -121,6 +126,7 @@
       </div>
     <div id="SE"></div>​
     <div id="SW"></div>
+      <!-- outputs the buttons and assigns the pwp functions to them  -->
         <div class="grid">
         <button class="btn-group btn-fwd" type="button" id="fwd" onclick="callButton('{{ url_for('fwd') }}', 'fwd')">Forward</button>
         <button class="btn-group btn-left" type="button" id="left" onclick="callButton('{{ url_for('left') }}', 'left')">Left</button>
