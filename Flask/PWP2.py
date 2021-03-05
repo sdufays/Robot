@@ -32,7 +32,7 @@ with open("loggingfile.txt", "w+") as loggingfile:
     rootLogger = logging.getLogger()
     fileHandler = logging.FileHandler("loggingfile.txt")
     fileHandler.setFormatter(logFormatter)
-    mod = fileHandler.readlines()
+    # mod = fileHandler.readlines()
     consoleHandler = logging.StreamHandler()
     rootLogger.addHandler(consoleHandler)
     rootLogger.addHandler(fileHandler)
