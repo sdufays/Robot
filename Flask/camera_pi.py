@@ -36,7 +36,7 @@ class VideoCamera(object):
                 (64, 236, 255),
                 3,
                 8,
-                0
+                0,
                 0.1)
         if left_c == 2:
             cv2.arrowedLine(overlay,
