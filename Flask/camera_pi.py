@@ -24,7 +24,7 @@ class VideoCamera(object):
         cv2.circle(overlay,
                         (width-radius,height-radius),
                         radius,
-                        (74, 204, 224),
+                        (147, 64, 255),
                         -1,
                         8)
 
@@ -32,32 +32,32 @@ class VideoCamera(object):
             cv2.arrowedLine(overlay,
                 (width-radius,height-radius),
                 (width-radius,height-2*radius),
-                (255, 74, 219),
+                (49, 242, 245),
                 8)
         if left_c == 2:
             cv2.arrowedLine(overlay,
                 (width-radius,height-radius),
                 (width-2*radius,height-radius),
-                (255, 74, 219),
+                (49, 242, 245),
                 8)
         if left_c == 3: 
             cv2.arrowedLine(overlay,
                 (width-radius,height-radius),
                 (width-radius,height),
-                (255, 74, 219),
+                (49, 242, 245),
                 8)
         if left_c == 4: 
             cv2.arrowedLine(overlay,
                 (width-radius,height-radius),
                 (width,height-radius),
-                (255, 74, 219),
+                (49, 242, 245),
                 8)
 
         # second right circle
         cv2.circle(overlay,
                         (radius,height-radius),
                         radius,
-                        (74, 204, 224),
+                        (147, 64, 255),
                         -1,
                         8) 
 
@@ -65,25 +65,25 @@ class VideoCamera(object):
             cv2.arrowedLine(overlay,
                             (radius,height-radius),
                             (radius,height-2*radius),
-                            (0,0,255),
+                            (49, 245, 118),
                             8)
         if right_c == 2: 
             cv2.arrowedLine(overlay,
                 (radius,height-radius),
                 (0,height-radius),
-                (0,0,255),
+                (49, 245, 118),
                 8)
         if right_c == 3: 
             cv2.arrowedLine(overlay,
                 (radius,height-radius),
                 (radius,height),
-                (0,0,255),
+                (49, 245, 118),
                 8)
         if right_c == 4: 
             cv2.arrowedLine(overlay,
                 (radius,height-radius),
                 (2*radius,height-radius),
-                (0,0,255),
+                (49, 245, 118),
                 8)
         # combine the overlay and the stream
         added_image = cv2.addWeighted(background,1,overlay,1,0)
