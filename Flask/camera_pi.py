@@ -43,19 +43,25 @@ class VideoCamera(object):
                 (width-radius,height-radius),
                 (width-2*radius,height-radius),
                 (64, 236, 255),
-                8)
+                8,
+                0,
+                0.1)
         if left_c == 3: 
             cv2.arrowedLine(overlay,
                 (width-radius,height-radius),
                 (width-radius,height),
                 (64, 236, 255),
-                8)
+                8,
+                0,
+                0.1)
         if left_c == 4: 
             cv2.arrowedLine(overlay,
                 (width-radius,height-radius),
                 (width,height-radius),
                 (64, 236, 255),
-                8)
+                8,
+                0,
+                0.1)
 
         # second right circle
         cv2.circle(overlay,
@@ -70,25 +76,33 @@ class VideoCamera(object):
                             (radius,height-radius),
                             (radius,height-2*radius),
                             (49, 245, 118),
-                            8)
+                            8,
+                            0,
+                            0.1)
         if right_c == 2: 
             cv2.arrowedLine(overlay,
                 (radius,height-radius),
                 (0,height-radius),
                 (49, 245, 118),
-                8)
+                8,
+                0,
+                0.1)
         if right_c == 3: 
             cv2.arrowedLine(overlay,
                 (radius,height-radius),
                 (radius,height),
                 (49, 245, 118),
-                8)
+                8,
+                0,
+                0.1)
         if right_c == 4: 
             cv2.arrowedLine(overlay,
                 (radius,height-radius),
                 (2*radius,height-radius),
                 (49, 245, 118),
-                8)
+                8,
+                0,
+                0.1)
         # combine the overlay and the stream
         added_image = cv2.addWeighted(background,1,overlay,1,0)
         # convert image to jpg and return 
