@@ -93,8 +93,7 @@ class VideoCamera(object):
                 (radius,height),
                 (49, 245, 118),
                 8,
-                0,
-                0.1)
+                0)
         if right_c == 4: 
             cv2.arrowedLine(overlay,
                 (radius,height-radius),
