@@ -28,14 +28,14 @@ arrows = [0,0]
 # logging stuff
 with open("loggingfile.txt", "w+") as loggingfile:
     blacklist = ""
-   logFormatter = logging.Formatter("%(asctime)s [%(levelname)-5.5s] %(message)s")
-   rootLogger = logging.getLogger()
-   fileHandler = logging.FileHandler("loggingfile.txt")
-   fileHandler.setFormatter(logFormatter)
-   mod = fileHandler.readlines()
-   consoleHandler = logging.StreamHandler()
-   rootLogger.addHandler(consoleHandler)
-   rootLogger.addHandler(fileHandler)
+    logFormatter = logging.Formatter("%(asctime)s [%(levelname)-5.5s] %(message)s")
+    rootLogger = logging.getLogger()
+    fileHandler = logging.FileHandler("loggingfile.txt")
+    fileHandler.setFormatter(logFormatter)
+    mod = fileHandler.readlines()
+    consoleHandler = logging.StreamHandler()
+    rootLogger.addHandler(consoleHandler)
+    rootLogger.addHandler(fileHandler)
 
 @app.route('/log_stream')
 def log_stream():
