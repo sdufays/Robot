@@ -21,8 +21,7 @@ class VideoCamera(object):
         overlay = background.copy()
 
         # first left circle
-        cv2.circle(overlay,
-                        (width-radius,height-radius), radius, (147, 64, 255), -1, 8)
+        cv2.circle(overlay,(width-radius,height-radius), radius, (147, 64, 255), -1, 8)
 
         if left_c == 1: 
             # cv2.arrowedLine(overlay, (500, 600), (500, 700), (64, 236, 255), 3, 8, 0, 0.1)
