@@ -29,7 +29,7 @@ class VideoCamera(object):
                         8)
 
         if left_c == 1: 
-            cv2.arrowedLine(overlay, (100, 100), (200, 100), (64, 236, 255), 3, 8, 0, 0.1)
+            cv2.arrowedLine(overlay, (500, 600), (500, 700), (64, 236, 255), 3, 8, 0, 0.1)
             # cv2.arrowedLine(overlay,
             #     (width-radius,height-radius),
             #     (width-radius,height-2*radius),
