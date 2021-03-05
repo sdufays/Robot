@@ -10,6 +10,7 @@ import os
 import picamera.array
 import cv2
 import socketserver
+import threading
 from threading import Condition
 from http import server
 import sys
@@ -112,4 +113,4 @@ def run():
     return "robot work yes"
 
 
-app.run(host= '0.0.0.0', port=8080, debug=True, thread=True)
+app.run(host= '0.0.0.0', port=8080, debug=True, threaded=True)
