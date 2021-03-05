@@ -27,6 +27,10 @@ arrows = [0,0]
 # a=1
 
 # logging stuff
+class NoParsingFilter(logging.Filter):
+    def filter(self, record):
+        return not record.getMessage().startswith('192.168.1.10 - - [05/Mar/2021 09:25:08] "GET /log_stream ')
+
 with open("loggingfile.txt", "w+") as loggingfile:
     blacklist = ""
     logFormatter = logging.Formatter("%(asctime)s [%(levelname)-5.5s] %(message)s")
@@ -35,6 +39,7 @@ with open("loggingfile.txt", "w+") as loggingfile:
     fileHandler.setFormatter(logFormatter)
     # mod = fileHandler.readlines()
     consoleHandler = logging.StreamHandler()
+    rootlogger.addFilter(NoParsingFilter())
     rootLogger.addHandler(consoleHandler)
     rootLogger.addHandler(fileHandler)
 
