@@ -1,22 +1,19 @@
 from flask import Flask, escape, request, render_template, Response
 from robotClass import robot
 import time
-import picamera
+# import picamera
 import socket
 import io
 import logging
-import datetime
+# import datetime
 import os
-import picamera.array
+# import picamera.array
 import cv2
-import socketserver
+# import socketserver
 import threading
 from threading import Condition
-from http import server
-import sys
-import io
-import picamera
-import logging
+# from http import server
+# import sys
 # call camera_pi file
 from camera_pi import VideoCamera
 
@@ -25,11 +22,6 @@ app=Flask(__name__)
 rc = robot()
 arrows = [0,0]
 # a=1
-
-# logging stuff
-# class streamFilter(logging.Filter):
-#     def filter(self, record):
-#         return not record.getMessage().startswith('2021-03-05 09:30:32,960 [INFO ] 192.168.1.10 - - [05/Mar/2021 09:30:32] " [37mGET /log_stream HTTP/1.1 [0m" 200 -')
 
 class NoParsingFilter(logging.Filter):
     def filter(self, record):
