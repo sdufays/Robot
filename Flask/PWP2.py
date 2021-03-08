@@ -1,19 +1,13 @@
 from flask import Flask, escape, request, render_template, Response
 from robotClass import robot
 import time
-# import picamera
 import socket
 import io
 import logging
-# import datetime
 import os
-# import picamera.array
 import cv2
-# import socketserver
 import threading
 from threading import Condition
-# from http import server
-# import sys
 # call camera_pi file
 from camera_pi import VideoCamera
 
