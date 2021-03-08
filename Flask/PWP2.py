@@ -33,7 +33,7 @@ arrows = [0,0]
 
 class NoParsingFilter(logging.Filter):
     def filter(self, record):
-        return not record.getMessage().__contains__('/logg HTTP')
+        return not record.getMessage().__contains__('log_stream')
 
 with open("loggingfile.txt", "w+") as loggingfile:
     blacklist = ""
@@ -41,7 +41,6 @@ with open("loggingfile.txt", "w+") as loggingfile:
     rootLogger = logging.getLogger()
     fileHandler = logging.FileHandler("loggingfile.txt")
     fileHandler.setFormatter(logFormatter)
-    # mod = fileHandler.readlines()
     consoleHandler = logging.StreamHandler()
     fileHandler.addFilter(NoParsingFilter())
     # rootLogger.addFilter(streamFilter())
