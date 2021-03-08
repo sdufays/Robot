@@ -43,7 +43,7 @@ class VideoCamera(object):
         if right_c == 4: 
             cv2.arrowedLine(overlay,(radius,height-radius),(2*radius,height-radius),(217, 159, 0),3,8,0, 0.2)
         # combine the overlay and the stream
-        added_image = cv2.addWeighted(image,0,overlay,1,0)
+        added_image = cv2.addWeighted(image,0.5,overlay,1,0)
         # convert image to jpg and return 
         ret, jpeg = cv2.imencode('.jpg', added_image)
         return jpeg.tobytes()
