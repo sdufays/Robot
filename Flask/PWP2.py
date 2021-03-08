@@ -31,6 +31,10 @@ arrows = [0,0]
 #     def filter(self, record):
 #         return not record.getMessage().startswith('2021-03-05 09:30:32,960 [INFO ] 192.168.1.10 - - [05/Mar/2021 09:30:32] " [37mGET /log_stream HTTP/1.1 [0m" 200 -')
 
+class NoParsingFilter(logging.Filter):
+    def filter(self, record):
+        return not record.getMessage().__contains__('/logg HTTP')
+
 with open("loggingfile.txt", "w+") as loggingfile:
     blacklist = ""
     logFormatter = logging.Formatter("%(asctime)s [%(levelname)-5.5s] %(message)s")
@@ -39,6 +43,7 @@ with open("loggingfile.txt", "w+") as loggingfile:
     fileHandler.setFormatter(logFormatter)
     # mod = fileHandler.readlines()
     consoleHandler = logging.StreamHandler()
+    fileHandler.addFilter(NoParsingFilter())
     # rootLogger.addFilter(streamFilter())
     rootLogger.addHandler(consoleHandler)
     rootLogger.addHandler(fileHandler)
